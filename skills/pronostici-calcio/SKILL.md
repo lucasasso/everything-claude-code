@@ -63,6 +63,35 @@ python3 pronostici.py giornata --comp serie-a --dal 2026-11-21 --al 2026-11-23 -
 python3 pronostici.py schedina --analisi pronostici/serie-a-2026-11-21/analisi.json --bankroll 50 --min-edge 0.03
 ```
 
+### 5b. Tre schedine su tutti i mercati (facile, media, difficile)
+
+Quando l'utente vuole andare oltre l'1X2, o chiede schedine a livelli di rischio, lancia:
+
+```bash
+python3 pronostici.py tre-schedine --analisi pronostici/serie-a-2026-11-21/analisi.json
+```
+
+Il comando ricava una sola griglia dei risultati esatti per partita, calibrata sulle quote 1X2 e Over/Under del mercato. Da quella calcola tutti i mercati:
+
+- segno e doppia chance;
+- Under/Over da 0.5 a 4.5 e GG/NG;
+- multigol;
+- gol della squadra di casa e della squadra ospite;
+- combo segno + gol (es. `1X + Over 1.5`, `2 + GG`).
+
+Le combo restano coerenti perché vengono dalla stessa griglia. Le tre fasce sono:
+
+| Schedina | Probabilità per giocata | Quota minima per giocata | Obiettivo quota totale |
+|---|---|---|---|
+| Facile | 70-90% | 1.15 | circa 2 |
+| Media | 55-76% | 1.28 | circa 5 |
+| Difficile | 33-60% | 1.60 | circa 20 |
+
+- Ogni schedina prende al massimo una giocata per partita.
+- Le partite in cui modello e mercato divergono vengono scelte per ultime.
+- Ogni schedina riceve un consiglio in base alla probabilità che passi: GIOCA se è almeno 30%, FACOLTATIVA tra 12% e 30%, NON GIOCARE sotto il 12%.
+- Le quote delle combo sono **stime** (prezzo equo più il margine tipico): fai confrontare all'utente la quota reale nella sua app e gioca solo se è almeno uguale a quella stimata.
+
 ### 6. Presenta il risultato
 
 Rispondi in italiano con:

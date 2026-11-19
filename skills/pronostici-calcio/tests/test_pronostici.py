@@ -147,3 +147,31 @@ def test_league_offset_keeps_a_small_league_champion_below_a_big_league_side():
                                      ("Vitória de Guimaraes", "Guimaraes"), ("Ajax Amsterdam", "Ajax")])
 def test_european_spellings_map_to_football_data(espn, fd):
     assert canonical_team(espn) == fd
+
+
+def test_combo_selections_are_consistent_and_calibrated_to_the_market():
+    from combo import all_selections, calibrated_matrix
+
+    fair = {"1": 0.60, "X": 0.24, "2": 0.16}
+    matrix = calibrated_matrix(1.2, 1.2, -0.05, fair, (2.5, 0.55), model_weight=0.0)
+    sel = all_selections(matrix)
+    assert sel["Segno 1"] == pytest.approx(0.60, abs=0.01)
+    assert sel["Over 2.5"] == pytest.approx(0.55, abs=0.02)
+    assert sel["Segno 1"] + sel["Segno X"] + sel["Segno 2"] == pytest.approx(1.0)
+    assert sel["1X + Over 1.5"] <= min(sel["Segno 1X"], sel["Over 1.5"])
+    assert sel["GG"] + sel["NG"] == pytest.approx(1.0)
+
+
+def test_three_slips_respect_tier_bands():
+    from schedine import TIERS, build_three_slips
+
+    match = {"partita": "A - B", "data": "2026-11-21", "modello": {"xg_home": 1.6, "xg_away": 0.9},
+             "mercati": [{"mercato": "1X2", "consenso": {"1": 0.55, "X": 0.26, "2": 0.19},
+                          "righe": [{"selezione": s, "p_modello": p, "p_mercato": p, "miglior_quota": 1 / p}
+                                    for s, p in (("1", 0.55), ("X", 0.26), ("2", 0.19))]}]}
+    analysis = {"modello": {"rho": -0.03}, "partite": [{**match, "partita": f"T{i} - U{i}"} for i in range(8)]}
+    result = build_three_slips(analysis)
+    for name, slip in result["schedine"].items():
+        for leg in slip["selezioni"]:
+            assert TIERS[name]["p_min"] <= leg["prob"] <= TIERS[name]["p_max"]
+    assert result["schedine"]["facile"]["probabilita"] > result["schedine"]["difficile"]["probabilita"]

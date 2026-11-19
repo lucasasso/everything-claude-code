@@ -5,6 +5,7 @@ Esempi:
   python3 pronostici.py giornata --comp serie-a --dal 2026-11-21 --al 2026-11-23
   python3 pronostici.py giornata --comp champions --dal 2026-11-24 --al 2026-11-25 --news news.json --quote snai.csv
   python3 pronostici.py schedina --analisi pronostici/serie-a-2026-11-21/analisi.json --bankroll 50
+  python3 pronostici.py tre-schedine --analisi pronostici/serie-a-2026-11-21/analisi.json
   python3 pronostici.py statistiche --squadra Inter
   python3 pronostici.py classifica-forza --top 30
   python3 pronostici.py backtest --lega I1 --stagione 2526
@@ -24,6 +25,8 @@ from fetch_data import espn_fixtures, espn_match_context, load_european_results,
 from model import fit
 from odds_tools import DEFAULT_MODEL_WEIGHT, analyse_market
 from report import render
+from schedine import build_three_slips
+from schedine import render as render_three
 from slip import build_slip
 from sources import collect_odds
 from stats import team_stats
@@ -127,6 +130,16 @@ def cmd_schedina(args: argparse.Namespace) -> None:
     print((path.parent / "report.md").read_text(encoding="utf-8"))
 
 
+def cmd_tre_schedine(args: argparse.Namespace) -> None:
+    path = Path(args.analisi)
+    analysis = json.loads(path.read_text(encoding="utf-8"))
+    result = build_three_slips(analysis, args.peso_modello)
+    write_json(path.parent / "tre_schedine.json", result)
+    text = render_three(result, analysis["competizione"])
+    (path.parent / "tre_schedine.md").write_text(text, encoding="utf-8")
+    print(text)
+
+
 def cmd_statistiche(args: argparse.Namespace) -> None:
     today = date.today()
     matches = load_fd_results(today, seasons_back=0)
@@ -171,6 +184,11 @@ def main() -> None:
     s.add_argument("--min-prob", type=float, default=0.30)
     s.add_argument("--max-legs", type=int, default=4)
     s.set_defaults(func=cmd_schedina)
+
+    t = sub.add_parser("tre-schedine", help="schedina facile, media e difficile su tutti i mercati e le combo")
+    t.add_argument("--analisi", required=True)
+    t.add_argument("--peso-modello", type=float, default=DEFAULT_MODEL_WEIGHT)
+    t.set_defaults(func=cmd_tre_schedine)
 
     st = sub.add_parser("statistiche", help="statistiche stagionali di una squadra")
     st.add_argument("--squadra", required=True)

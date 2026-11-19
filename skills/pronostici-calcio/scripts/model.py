@@ -51,14 +51,7 @@ class TeamModel:
         return lam, mu
 
     def score_matrix(self, lam: float, mu: float) -> np.ndarray:
-        goals = np.arange(MAX_GOALS + 1)
-        matrix = np.outer(poisson.pmf(goals, lam), poisson.pmf(goals, mu))
-        rho = self.rho
-        matrix[0, 0] *= 1 - lam * mu * rho
-        matrix[0, 1] *= 1 + lam * rho
-        matrix[1, 0] *= 1 + mu * rho
-        matrix[1, 1] *= 1 - rho
-        return matrix / matrix.sum()
+        return score_matrix(lam, mu, self.rho)
 
     def predict(self, home: str, away: str, comp: str, adjustments: dict | None = None) -> dict:
         lam, mu = self.expected_goals(home, away, comp, adjustments)
@@ -68,6 +61,17 @@ class TeamModel:
         rows = [{"team": t, "attacco": float(self.attack[i]), "difesa": float(self.defence[i]),
                  "forza": float(self.attack[i] - self.defence[i])} for t, i in self.index.items()]
         return sorted(rows, key=lambda r: r["forza"], reverse=True)
+
+
+def score_matrix(lam: float, mu: float, rho: float) -> np.ndarray:
+    """Dixon-Coles probability of every score up to MAX_GOALS each."""
+    goals = np.arange(MAX_GOALS + 1)
+    matrix = np.outer(poisson.pmf(goals, lam), poisson.pmf(goals, mu))
+    matrix[0, 0] *= 1 - lam * mu * rho
+    matrix[0, 1] *= 1 + lam * rho
+    matrix[1, 0] *= 1 + mu * rho
+    matrix[1, 1] *= 1 - rho
+    return matrix / matrix.sum()
 
 
 def _clip(value: float) -> float:
