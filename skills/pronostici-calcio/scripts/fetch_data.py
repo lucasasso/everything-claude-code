@@ -87,6 +87,8 @@ def load_fd_results(day: date, seasons_back: int = 1, leagues: tuple[str, ...] =
                     "date": _fd_date(row["Date"]), "comp": league, "home": row["HomeTeam"].strip(),
                     "away": row["AwayTeam"].strip(), "hg": int(hg), "ag": int(ag),
                     "hxg": _num(row.get("HxG")), "axg": _num(row.get("AxG")),
+                    "ht": (_num(row.get("HTHG")), _num(row.get("HTAG"))),
+                    "fouls": (_num(row.get("HF")), _num(row.get("AF"))),
                     "shots": (_num(row.get("HS")), _num(row.get("AS"))),
                     "sot": (_num(row.get("HST")), _num(row.get("AST"))),
                     "corners": (_num(row.get("HC")), _num(row.get("AC"))),

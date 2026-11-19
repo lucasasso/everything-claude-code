@@ -175,3 +175,43 @@ def test_three_slips_respect_tier_bands():
         for leg in slip["selezioni"]:
             assert TIERS[name]["p_min"] <= leg["prob"] <= TIERS[name]["p_max"]
     assert result["schedine"]["facile"]["probabilita"] > result["schedine"]["difficile"]["probabilita"]
+
+
+def test_half_markets_are_consistent():
+    from speciali import half_markets
+
+    out = half_markets(1.5, 1.5, 0.45, 0.45)
+    assert sum(v for k, v in out.items() if k.startswith("Parziale/Finale")) == pytest.approx(1.0, abs=1e-6)
+    assert out["1T Over 0.5"] + out["1T Under 0.5"] == pytest.approx(1.0)
+    assert sum(out[f"Tempo con più gol: {x}"] for x in ("1T", "2T", "pari")) == pytest.approx(1.0, abs=1e-6)
+    assert out["1T Segno 1"] == pytest.approx(out["1T Segno 2"])
+    assert out["2T Over 0.5"] > out["1T Over 0.5"]  # 55% of goals come after half-time
+
+
+def test_count_model_ranks_the_corner_heavy_side_and_sums_to_one():
+    from speciali import fit_count_models
+
+    start, matches = date(2026, 1, 1), []
+    for week in range(20):
+        day = start + timedelta(days=7 * week)
+        matches += [
+            {"date": day, "comp": "I1", "home": "Forte", "away": "Debole", "hg": 2, "ag": 0,
+             "corners": (8, 2), "cards": (1, 3, 0, 0), "sot": (7, 2)},
+            {"date": day, "comp": "I1", "home": "Debole", "away": "Forte", "hg": 0, "ag": 1,
+             "corners": (3, 7), "cards": (2, 1, 0, 0), "sot": (2, 6)},
+        ]
+    corners = fit_count_models(matches, start + timedelta(days=150))["Corner"]
+    mk = corners.markets("Forte", "Debole", "I1")
+    assert mk["Corner 1X2: 1"] > 0.8
+    assert mk["Corner 1X2: 1"] + mk["Corner 1X2: X"] + mk["Corner 1X2: 2"] == pytest.approx(1.0, abs=1e-6)
+    assert mk["Corner Over 9.5"] + mk["Corner Under 9.5"] == pytest.approx(1.0)
+
+
+def test_scorer_estimate_shrinks_short_hot_streaks():
+    from speciali import scorer_markets
+
+    leaders = {"Casa FC": ["Goals: Bomber (Matches: 2, Goals: 2)", "Goals: Titolare (Matches: 10, Goals: 6)"],
+               "Ospite FC": []}
+    out = scorer_markets(leaders, "Casa FC", "Ospite FC", (1.5, 1.0), {"Casa FC": 1.5})
+    assert out["Marcatore: Titolare"] > out["Marcatore: Bomber"]
+    assert 0 < out["Marcatore: Bomber"] < 0.5

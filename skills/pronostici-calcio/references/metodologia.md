@@ -73,3 +73,15 @@ Cosa dicono i numeri, senza abbellimenti:
 - Lo strato delle notizie, che è il giudizio dell'agente, non è coperto da questi backtest.
 
 Rilancia il backtest dopo ogni modifica del modello e aggiorna questa tabella.
+
+## 6. Mercati speciali: verifica
+
+Verifica settimanale sulla Serie A 2026-27, dal 20 settembre al 10 novembre (65 partite). Il riferimento è la frequenza media della stagione, che peraltro conosce in anticipo la media finale.
+
+| Mercato | Log-loss modello | Media stagione | Quando il modello dà ≥ 60% | Quando dà ≤ 40% |
+|---|---|---|---|---|
+| Corner Over 9.5 | 0.685 | 0.690 | 6 su 7 passati | 11 su 30 passati |
+| Cartellini Over 3.5 | 0.685 | 0.679 | 11 su 16 | 7 su 18 |
+| Tiri in porta Over 8.5 | 0.669 | 0.650 | 19 su 24 | 7 su 16 |
+
+Il campione è piccolo. Il modello dei conteggi aiuta solo sui segnali netti, mentre sui casi vicini alla media non aggiunge nulla. Per i cartellini manca l'arbitro, che pesa molto.

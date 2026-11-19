@@ -92,6 +92,28 @@ Le combo restano coerenti perché vengono dalla stessa griglia. Le tre fasce son
 - Ogni schedina riceve un consiglio in base alla probabilità che passi: GIOCA se è almeno 30%, FACOLTATIVA tra 12% e 30%, NON GIOCARE sotto il 12%.
 - Le quote delle combo sono **stime** (prezzo equo più il margine tipico): fai confrontare all'utente la quota reale nella sua app e gioca solo se è almeno uguale a quella stimata.
 
+### 5c. Mercati speciali (corner, cartellini, tempi, parziale/finale, marcatori)
+
+```bash
+python3 pronostici.py speciali --analisi pronostici/serie-a-2026-11-21/analisi.json
+```
+
+Il comando stima i mercati speciali che di solito offrono i bookmaker italiani come Sisal:
+
+- **Calci d'angolo, cartellini e tiri in porta**: totale, singola squadra, 1X2. Si stimano dalle medie di squadra pesate nel tempo, con distribuzione binomiale negativa quando i dati sono più variabili del normale.
+- **Primo e secondo tempo, parziale/finale, tempo con più gol, segna in entrambi i tempi, vince almeno un tempo**: si ricavano dai gol attesi calibrati sul mercato, divisi tra i due tempi con la quota di gol del primo tempo del campionato.
+- **Handicap, vince a zero, multigol di squadra, pari/dispari**: dalla stessa griglia dei risultati esatti.
+- **Marcatori**: stima grezza. Usa la quota di gol della squadra per presenza, con 3 presenze senza gol aggiunte come prudenza.
+
+Regole per usarli:
+
+- Corner, cartellini e tiri in porta prevedono di poco meglio della media del campionato (verifica su 65 partite in [references/metodologia.md](references/metodologia.md)). Usali solo quando il segnale è netto, per esempio quando una squadra batte il doppio dei corner dell'avversaria, e quando le statistiche stagionali lo confermano.
+- Per i cartellini controlla l'arbitro designato, che di solito si conosce dal giovedì o venerdì.
+- Tempi, handicap e parziale/finale vengono dal modello dei gol calibrato sul mercato, quindi sono più solidi.
+- I margini su questi mercati sono più alti (corner circa 8%, parziale/finale circa 15%, marcatori circa 20%). A parità di quota, una schedina di giocate speciali passa meno spesso di una sui gol.
+- In una multipla metti una sola giocata per partita: in genere i bookmaker non permettono di combinare due esiti della stessa partita.
+- Chiedi all'utente le quote reali del suo bookmaker su questi mercati: le inefficienze di prezzo sono più probabili qui che sull'1X2.
+
 ### 6. Presenta il risultato
 
 Rispondi in italiano con:

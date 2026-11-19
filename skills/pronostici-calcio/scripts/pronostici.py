@@ -6,6 +6,7 @@ Esempi:
   python3 pronostici.py giornata --comp champions --dal 2026-11-24 --al 2026-11-25 --news news.json --quote snai.csv
   python3 pronostici.py schedina --analisi pronostici/serie-a-2026-11-21/analisi.json --bankroll 50
   python3 pronostici.py tre-schedine --analisi pronostici/serie-a-2026-11-21/analisi.json
+  python3 pronostici.py speciali --analisi pronostici/serie-a-2026-11-21/analisi.json
   python3 pronostici.py statistiche --squadra Inter
   python3 pronostici.py classifica-forza --top 30
   python3 pronostici.py backtest --lega I1 --stagione 2526
@@ -25,7 +26,11 @@ from fetch_data import espn_fixtures, espn_match_context, load_european_results,
 from model import fit
 from odds_tools import DEFAULT_MODEL_WEIGHT, analyse_market
 from report import render
+from combo import all_selections, calibrated_matrix
+from schedine import _consensus as consensus_1x2_market
+from schedine import _fair_total as fair_total_line
 from schedine import build_three_slips
+from speciali import fit_count_models, first_half_shares, render_specials, special_selections, top_by_category
 from schedine import render as render_three
 from slip import build_slip
 from sources import collect_odds
@@ -140,6 +145,38 @@ def cmd_tre_schedine(args: argparse.Namespace) -> None:
     print(text)
 
 
+def cmd_speciali(args: argparse.Namespace) -> None:
+    path = Path(args.analisi)
+    analysis = json.loads(path.read_text(encoding="utf-8"))
+    start = date.fromisoformat(analysis["dal"])
+    league_matches = load_fd_results(start, seasons_back=1, leagues=("I1",))
+    counts = fit_count_models(league_matches, start)
+    shares = first_half_shares(league_matches)
+    rho = analysis["modello"]["rho"]
+
+    rows = []
+    for m in analysis["partite"]:
+        home, away = m["partita"].split(" - ", 1)
+        fair_1x2, fair_total = consensus_1x2_market(m, "1X2") or None, fair_total_line(m)
+        matrix = calibrated_matrix(m["modello"]["xg_home"], m["modello"]["xg_away"], rho, fair_1x2, fair_total,
+                                   args.peso_modello)
+        selections = {**all_selections(matrix),
+                      **special_selections(m, rho, counts, shares, fair_1x2, fair_total, matrix)}
+        expected = {}
+        for name, cm in counts.items():
+            try:
+                expected[name] = cm.expected(home, away, "I1")
+            except KeyError:
+                continue
+        rows.append({"partita": m["partita"], "data": m["data"], "attesi": expected, "selezioni": selections,
+                     "top": top_by_category(selections)})
+
+    write_json(path.parent / "speciali.json", rows)
+    text = render_specials(rows, analysis["competizione"])
+    (path.parent / "speciali.md").write_text(text, encoding="utf-8")
+    print(text)
+
+
 def cmd_statistiche(args: argparse.Namespace) -> None:
     today = date.today()
     matches = load_fd_results(today, seasons_back=0)
@@ -189,6 +226,11 @@ def main() -> None:
     t.add_argument("--analisi", required=True)
     t.add_argument("--peso-modello", type=float, default=DEFAULT_MODEL_WEIGHT)
     t.set_defaults(func=cmd_tre_schedine)
+
+    sp = sub.add_parser("speciali", help="corner, cartellini, tiri in porta, tempi, parziale/finale, marcatori")
+    sp.add_argument("--analisi", required=True)
+    sp.add_argument("--peso-modello", type=float, default=DEFAULT_MODEL_WEIGHT)
+    sp.set_defaults(func=cmd_speciali)
 
     st = sub.add_parser("statistiche", help="statistiche stagionali di una squadra")
     st.add_argument("--squadra", required=True)

@@ -7,8 +7,12 @@ import math
 from combo import all_selections, calibrated_matrix
 from odds_tools import DEFAULT_MODEL_WEIGHT
 
-# Typical Italian-book margin: low on 1X2 and totals, higher on combos and multigol.
+# Typical Italian-book margin: low on 1X2 and totals, higher on combos, specials and scorers.
 MARGIN_SIMPLE, MARGIN_COMBO = 0.05, 0.09
+SPECIAL_MARGINS = (
+    ("Marcatore", 0.20), ("Parziale/Finale", 0.15), ("Corner", 0.08), ("Cartellini", 0.09),
+    ("Tiri in porta", 0.09), ("1T ", 0.07), ("2T ", 0.07), ("Tempo con più gol", 0.08), ("Handicap", 0.06),
+)
 DIVERGENCE_PENALTY = 0.5
 TIERS = {
     "facile": {"p_min": 0.70, "p_max": 0.90, "min_leg_odds": 1.15, "target_odds": 2.2, "min_legs": 3, "max_legs": 5},
@@ -61,13 +65,21 @@ def build_three_slips(analysis: dict, model_weight: float = DEFAULT_MODEL_WEIGHT
     return {"previsioni": previsioni, "schedine": slips}
 
 
+def margin_for(selection: str) -> float:
+    """Assumed bookmaker margin for a selection, used to estimate a price when no quote is available."""
+    for prefix, margin in SPECIAL_MARGINS:
+        if selection.startswith(prefix):
+            return margin
+    return MARGIN_COMBO if ("+" in selection or "Multigol" in selection or "segna" in selection
+                            or "tempo" in selection) else MARGIN_SIMPLE
+
+
 def _build_tier(per_match: list[dict], cfg: dict) -> dict:
     picks = []
     for pm in per_match:
         options = []
         for sel, p in pm["selezioni"].items():
-            margin = MARGIN_COMBO if ("+" in sel or "Multigol" in sel) else MARGIN_SIMPLE
-            book = _book_price(pm["match"], sel) or 1 / (p * (1 + margin))
+            book = _book_price(pm["match"], sel) or 1 / (p * (1 + margin_for(sel)))
             if cfg["p_min"] <= p <= cfg["p_max"] and book >= cfg["min_leg_odds"]:
                 options.append((p, sel, book))
         if not options:

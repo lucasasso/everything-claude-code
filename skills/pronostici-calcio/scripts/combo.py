@@ -11,7 +11,7 @@ import math
 import numpy as np
 from scipy.optimize import minimize
 
-from model import score_matrix
+from model import MAX_GOALS, score_matrix
 
 SIGNS = ("1", "X", "2", "1X", "X2", "12")
 MULTIGOL = ((1, 2), (1, 3), (2, 3), (2, 4), (3, 5), (1, 4), (2, 5))
@@ -55,13 +55,12 @@ def all_selections(matrix: np.ndarray) -> dict[str, float]:
     return out
 
 
-def calibrated_matrix(lam: float, mu: float, rho: float, fair_1x2: dict | None,
-                      fair_total: tuple[float, float] | None, model_weight: float) -> np.ndarray:
-    """Re-fit expected goals to the market, then blend with the model matrix."""
-    model_matrix = score_matrix(lam, mu, rho)
+def calibrated_rates(lam: float, mu: float, rho: float, fair_1x2: dict | None,
+                     fair_total: tuple[float, float] | None) -> tuple[float, float]:
+    """Expected goals that reproduce the market's 1X2 (and over/under, when known)."""
     if not fair_1x2:
-        return model_matrix
-    hg, ag = np.indices(model_matrix.shape)
+        return lam, mu
+    hg, ag = np.indices((MAX_GOALS + 1, MAX_GOALS + 1))
 
     def loss(x: np.ndarray) -> float:
         m = score_matrix(math.exp(x[0]), math.exp(x[1]), rho)
@@ -72,5 +71,14 @@ def calibrated_matrix(lam: float, mu: float, rho: float, fair_1x2: dict | None,
         return float(err)
 
     x = minimize(loss, np.log([lam, mu]), method="Nelder-Mead", options={"xatol": 1e-4, "fatol": 1e-10}).x
-    market_matrix = score_matrix(math.exp(x[0]), math.exp(x[1]), rho)
+    return math.exp(x[0]), math.exp(x[1])
+
+
+def calibrated_matrix(lam: float, mu: float, rho: float, fair_1x2: dict | None,
+                      fair_total: tuple[float, float] | None, model_weight: float) -> np.ndarray:
+    """Re-fit expected goals to the market, then blend with the model matrix."""
+    model_matrix = score_matrix(lam, mu, rho)
+    if not fair_1x2:
+        return model_matrix
+    market_matrix = score_matrix(*calibrated_rates(lam, mu, rho, fair_1x2, fair_total), rho)
     return model_weight * model_matrix + (1 - model_weight) * market_matrix
