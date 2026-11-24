@@ -5,7 +5,7 @@ from __future__ import annotations
 import math
 
 from combo import all_selections, calibrated_matrix
-from odds_tools import DEFAULT_MODEL_WEIGHT
+from odds_tools import DEFAULT_MODEL_WEIGHT, market_move
 
 # Typical Italian-book margin: low on 1X2 and totals, higher on combos, specials and scorers.
 MARGIN_SIMPLE, MARGIN_COMBO = 0.05, 0.09
@@ -44,6 +44,26 @@ def _book_price(match: dict, selection: str) -> float | None:
         return None
     rows = next((mk["righe"] for mk in match["mercati"] if mk["mercato"] == "1X2"), [])
     return next((r["miglior_quota"] for r in rows if r["selezione"] == selection[-1]), None)
+
+
+_SIDE_OF = (("Segno 1X", ("1", "X")), ("Segno X2", ("X", "2")), ("Segno 12", ("1", "2")),
+            ("Segno 1", ("1",)), ("Segno X", ("X",)), ("Segno 2", ("2",)),
+            ("1X ", ("1", "X")), ("X2 ", ("X", "2")), ("12 ", ("1", "2")),
+            ("1 ", ("1",)), ("X ", ("X",)), ("2 ", ("2",)),
+            ("Handicap 1", ("1",)), ("Handicap 2", ("2",)), ("Casa vince", ("1",)), ("Ospite vince", ("2",)),
+            ("Parziale/Finale 1/1", ("1",)), ("Parziale/Finale 2/2", ("2",)))
+
+
+def move_for(match: dict, selection: str) -> float | None:
+    """Market move (opening to now) behind a selection: the result side it needs, or its over/under."""
+    moves = market_move((match.get("contesto") or {}).get("movimento") or {})
+    for prefix, sides in _SIDE_OF:
+        if selection.startswith(prefix) and "1X2" in moves:
+            return sum(moves["1X2"][x] for x in sides)
+    for market, sel_moves in moves.items():
+        if market != "1X2" and selection in sel_moves:
+            return sel_moves[selection]
+    return None
 
 
 def match_selections(match: dict, rho: float, model_weight: float = DEFAULT_MODEL_WEIGHT) -> dict[str, float]:

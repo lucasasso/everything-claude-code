@@ -134,6 +134,26 @@ def _espn_odds(competition: dict) -> dict:
     return {provider: entry} if entry else {}
 
 
+def _espn_movement(pick: dict) -> dict:
+    """Opening and current decimal prices per selection, from the ESPN pickcenter."""
+    out: dict[str, dict[str, list[float]]] = {}
+    moneyline = pick.get("moneyline") or {}
+    sides = {"1": "home", "X": "draw", "2": "away"}
+    prices = {sel: [american_to_decimal(((moneyline.get(side) or {}).get(when) or {}).get("odds"))
+                    for when in ("open", "close")] for sel, side in sides.items()}
+    if all(None not in v for v in prices.values()):
+        out["1X2"] = prices
+    total = pick.get("total") or {}
+    over, under = total.get("over") or {}, total.get("under") or {}
+    lines = {((over.get(w) or {}).get("line") or "")[1:] for w in ("open", "close")}
+    if len(lines) == 1 and (line := lines.pop()):
+        totals = {f"Over {line}": [american_to_decimal((over.get(w) or {}).get("odds")) for w in ("open", "close")],
+                  f"Under {line}": [american_to_decimal((under.get(w) or {}).get("odds")) for w in ("open", "close")]}
+        if all(None not in v for v in totals.values()):
+            out[f"OU{line}"] = totals
+    return out
+
+
 def _espn_events(league: str, dates_param: str, cache_hours: float) -> list[dict]:
     url = f"{ESPN_BASE}/{league}/scoreboard?dates={dates_param}&limit=1000"
     try:
@@ -202,5 +222,7 @@ def espn_match_context(league: str, event_id: str) -> dict:
             stats = {s["name"]: s.get("displayValue") for s in entry.get("stats", [])}
             table.append({"team": entry["team"], "pts": stats.get("points"), "gp": stats.get("gamesPlayed"),
                           "rank": stats.get("rank"), "gd": stats.get("pointDifferential")})
-    odds = _espn_odds({"odds": data.get("pickcenter") or data.get("odds") or []})
-    return {"form": form, "leaders": leaders, "standings": table, "odds": odds}
+    picks = data.get("pickcenter") or data.get("odds") or []
+    odds = _espn_odds({"odds": picks})
+    movement = _espn_movement(picks[0]) if picks else {}
+    return {"form": form, "leaders": leaders, "standings": table, "odds": odds, "movimento": movement}

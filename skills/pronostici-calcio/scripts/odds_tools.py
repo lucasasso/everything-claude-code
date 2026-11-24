@@ -134,3 +134,17 @@ def kelly_stake(prob: float, odds: float, fraction: float = 0.25, cap: float = 0
         return 0.0
     full = (prob * b - (1 - prob)) / b
     return max(0.0, min(cap, full * fraction))
+
+
+def market_move(movement: dict) -> dict[str, dict[str, float]]:
+    """Change in de-vigged probability from opening to now, per market and selection.
+
+    A price that shortens (probability up) usually means news or informed money on that side.
+    """
+    out = {}
+    for market, prices in movement.items():
+        opening = devig({sel: v[0] for sel, v in prices.items()})
+        now = devig({sel: v[1] for sel, v in prices.items()})
+        if opening and now:
+            out[market] = {sel: now[sel] - opening[sel] for sel in now}
+    return out

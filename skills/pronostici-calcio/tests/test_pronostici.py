@@ -215,3 +215,20 @@ def test_scorer_estimate_shrinks_short_hot_streaks():
     out = scorer_markets(leaders, "Casa FC", "Ospite FC", (1.5, 1.0), {"Casa FC": 1.5})
     assert out["Marcatore: Titolare"] > out["Marcatore: Bomber"]
     assert 0 < out["Marcatore: Bomber"] < 0.5
+
+
+def test_market_move_tracks_shortening_prices():
+    from odds_tools import market_move
+    from schedine import move_for
+
+    movement = {"1X2": {"1": [2.10, 1.85], "X": [3.40, 3.50], "2": [3.60, 4.20]},
+                "OU2.5": {"Over 2.5": [1.90, 1.90], "Under 2.5": [1.90, 1.90]}}
+    moves = market_move(movement)
+    assert moves["1X2"]["1"] > 0.03 > 0 > moves["1X2"]["2"]
+    assert moves["OU2.5"]["Over 2.5"] == pytest.approx(0.0, abs=1e-9)
+
+    match = {"contesto": {"movimento": movement}}
+    assert move_for(match, "Segno 1") == pytest.approx(moves["1X2"]["1"])
+    assert move_for(match, "1X + Over 1.5") == pytest.approx(moves["1X2"]["1"] + moves["1X2"]["X"])
+    assert move_for(match, "Handicap 2 (-1)") < 0
+    assert move_for({}, "Segno 1") is None

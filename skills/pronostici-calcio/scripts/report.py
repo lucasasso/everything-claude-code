@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from odds_tools import market_move
+
 KEY_MARKETS = ("1X2", "DC", "OU2.5", "GG/NG")
 
 
@@ -62,6 +64,10 @@ def _render_slip(slip: dict) -> list[str]:
 def _render_match(m: dict) -> list[str]:
     out = [f"### {m['partita']} — {m['data']}", "",
            f"Gol attesi: {m['modello']['xg_home']} – {m['modello']['xg_away']}"]
+    moves = market_move((m.get("contesto") or {}).get("movimento") or {})
+    if moves:
+        out.append("Movimento quote (apertura → ora): " + "; ".join(
+            f"{mk} " + ", ".join(f"{sel} {d * 100:+.0f}pp" for sel, d in sels.items()) for mk, sels in moves.items()))
     adj = m.get("aggiustamenti_news")
     if adj:
         out.append("Aggiustamenti news: " + "; ".join(f"{t}: {v.get('motivo', '')} (att {v.get('attacco', 0):+.0%}, "
