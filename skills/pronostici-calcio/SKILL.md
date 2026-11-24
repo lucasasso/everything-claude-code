@@ -153,3 +153,4 @@ I test offline si lanciano dalla cartella della skill con `python3 -m pytest tes
 - [references/metodologia.md](references/metodologia.md): modello, de-vig, valore, Kelly, risultati dei backtest.
 - [references/news-e-aggiustamenti.md](references/news-e-aggiustamenti.md): checklist delle notizie e formato di `news.json`.
 - [references/fonti.md](references/fonti.md): fonti dei dati, chiave The Odds API, formato del CSV delle quote.
+- [references/strategia.md](references/strategia.md): le regole per scegliere le giocate. Applicale sempre prima di proporre una schedina: movimento delle quote, poche partite, giocare dopo le formazioni, puntata fissa.
