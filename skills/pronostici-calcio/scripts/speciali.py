@@ -72,28 +72,33 @@ class CountModel:
         return self.team_model.expected_goals(home, away, comp)
 
 
-def fit_count_models(matches: list[dict], as_of: date, league: str = "I1") -> dict[str, CountModel]:
+def fit_count_models(matches: list[dict], as_of: date, leagues: tuple[str, ...] = ("I1",)) -> dict[str, CountModel]:
+    """One team model per count statistic. With several leagues, each team is rated within its own league.
+
+    Leagues never meet in these data, so for cross-league (European) fixtures the league levels are only
+    split evenly between attack and defence: treat those estimates as rougher than domestic ones.
+    """
     models = {}
     for name, getter in COUNT_STATS.items():
         rows = []
         for m in matches:
-            values = getter(m) if m["comp"] == league else None
+            values = getter(m) if m["comp"] in leagues else None
             if values and None not in values:
-                rows.append({"date": m["date"], "comp": league, "home": m["home"], "away": m["away"],
+                rows.append({"date": m["date"], "comp": m["comp"], "home": m["home"], "away": m["away"],
                              "hg": int(values[0]), "ag": int(values[1])})
-        team_model = fit(rows, as_of=as_of, goals_weight=1.0)
+        team_model = fit(rows, as_of=as_of, goals_weight=1.0, domestic_comps=leagues)
         team_model.rho = 0.0
-        models[name] = CountModel(name=name, team_model=team_model, shape=_side_shape(team_model, rows, league))
+        models[name] = CountModel(name=name, team_model=team_model, shape=_side_shape(team_model, rows))
     return models
 
 
-def _side_shape(team_model, rows: list[dict], league: str) -> float | None:
+def _side_shape(team_model, rows: list[dict]) -> float | None:
     """Method-of-moments NB shape from residuals of the fitted means (both sides pooled)."""
     num = den = 0.0
     for r in rows:
         if r["home"] not in team_model.index or r["away"] not in team_model.index:
             continue
-        lam, mu = team_model.expected_goals(r["home"], r["away"], league)
+        lam, mu = team_model.expected_goals(r["home"], r["away"], r["comp"])
         for y, m in ((r["hg"], lam), (r["ag"], mu)):
             num += (y - m) ** 2 - m
             den += m * m
@@ -101,9 +106,9 @@ def _side_shape(team_model, rows: list[dict], league: str) -> float | None:
     return None if inv_shape <= 1e-3 else 1 / inv_shape
 
 
-def first_half_shares(matches: list[dict], league: str = "I1") -> tuple[float, float]:
-    """Share of home and away goals scored before half-time in the league."""
-    rows = [m for m in matches if m["comp"] == league and m.get("ht") and None not in m["ht"]]
+def first_half_shares(matches: list[dict], leagues: tuple[str, ...] = ("I1",)) -> tuple[float, float]:
+    """Share of home and away goals scored before half-time in the given leagues."""
+    rows = [m for m in matches if m["comp"] in leagues and m.get("ht") and None not in m["ht"]]
     hg, ag = sum(m["hg"] for m in rows), sum(m["ag"] for m in rows)
     h1, a1 = sum(m["ht"][0] for m in rows), sum(m["ht"][1] for m in rows)
     return (h1 / hg if hg else 0.45, a1 / ag if ag else 0.45)
@@ -189,13 +194,13 @@ def scorer_markets(leaders: dict[str, list[str]], home: str, away: str, rates: t
 
 def special_selections(match: dict, rho: float, counts: dict[str, CountModel], shares: tuple[float, float],
                        fair_1x2: dict | None, fair_total: tuple[float, float] | None,
-                       matrix: np.ndarray) -> dict[str, float]:
+                       matrix: np.ndarray, comp: str = "I1") -> dict[str, float]:
     home, away = match["partita"].split(" - ", 1)
     lam, mu = calibrated_rates(match["modello"]["xg_home"], match["modello"]["xg_away"], rho, fair_1x2, fair_total)
     out: dict[str, float] = {}
     for model in counts.values():
         try:
-            out.update(model.markets(home, away, "I1"))
+            out.update(model.markets(home, away, comp))
         except KeyError:
             continue
     out.update(half_markets(lam, mu, *shares))

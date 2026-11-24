@@ -149,9 +149,12 @@ def cmd_speciali(args: argparse.Namespace) -> None:
     path = Path(args.analisi)
     analysis = json.loads(path.read_text(encoding="utf-8"))
     start = date.fromisoformat(analysis["dal"])
-    league_matches = load_fd_results(start, seasons_back=1, leagues=("I1",))
-    counts = fit_count_models(league_matches, start)
-    shares = first_half_shares(league_matches)
+    comp_key = next(k for k, c in COMPETITIONS.items() if c["label"] == analysis["competizione"])
+    leagues = (COMPETITIONS[comp_key]["fd"],) if COMPETITIONS[comp_key]["fd"] else FD_LEAGUES
+    model_comp = COMPETITIONS[comp_key]["fd"] or COMPETITIONS[comp_key]["espn"]
+    league_matches = load_fd_results(start, seasons_back=1, leagues=leagues)
+    counts = fit_count_models(league_matches, start, leagues)
+    shares = first_half_shares(league_matches, leagues)
     rho = analysis["modello"]["rho"]
 
     rows = []
@@ -161,11 +164,11 @@ def cmd_speciali(args: argparse.Namespace) -> None:
         matrix = calibrated_matrix(m["modello"]["xg_home"], m["modello"]["xg_away"], rho, fair_1x2, fair_total,
                                    args.peso_modello)
         selections = {**all_selections(matrix),
-                      **special_selections(m, rho, counts, shares, fair_1x2, fair_total, matrix)}
+                      **special_selections(m, rho, counts, shares, fair_1x2, fair_total, matrix, model_comp)}
         expected = {}
         for name, cm in counts.items():
             try:
-                expected[name] = cm.expected(home, away, "I1")
+                expected[name] = cm.expected(home, away, model_comp)
             except KeyError:
                 continue
         rows.append({"partita": m["partita"], "data": m["data"], "attesi": expected, "selezioni": selections,
