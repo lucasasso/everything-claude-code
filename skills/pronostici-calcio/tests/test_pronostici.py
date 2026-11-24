@@ -229,6 +229,13 @@ def test_market_move_tracks_shortening_prices():
 
     match = {"contesto": {"movimento": movement}}
     assert move_for(match, "Segno 1") == pytest.approx(moves["1X2"]["1"])
-    assert move_for(match, "1X + Over 1.5") == pytest.approx(moves["1X2"]["1"] + moves["1X2"]["X"])
+    assert move_for(match, "1X + Over 1.5") == pytest.approx(min(moves["1X2"]["1"] + moves["1X2"]["X"],
+                                                                 moves["OU2.5"]["Over 2.5"]))
     assert move_for(match, "Handicap 2 (-1)") < 0
     assert move_for({}, "Segno 1") is None
+
+    goals_up = {"contesto": {"movimento": {"OU3.5": {"Over 3.5": [2.0, 1.75], "Under 3.5": [1.8, 2.05]}}}}
+    assert move_for(goals_up, "Over 3.5") > 0
+    assert move_for(goals_up, "NG") < 0
+    assert move_for(goals_up, "Casa vince a zero") < 0
+    assert move_for(goals_up, "Segno X") is None

@@ -55,15 +55,32 @@ _SIDE_OF = (("Segno 1X", ("1", "X")), ("Segno X2", ("X", "2")), ("Segno 12", ("1
 
 
 def move_for(match: dict, selection: str) -> float | None:
-    """Market move (opening to now) behind a selection: the result side it needs, or its over/under."""
+    """Market move (opening to now) behind a selection, or None when the market gives no signal.
+
+    Combines the result side the selection needs with the direction of goals it implies (more goals
+    for Over/GG, fewer for Under/NG/win to nil) and returns the least favourable of the two.
+    """
     moves = market_move((match.get("contesto") or {}).get("movimento") or {})
+    parts = []
     for prefix, sides in _SIDE_OF:
         if selection.startswith(prefix) and "1X2" in moves:
-            return sum(moves["1X2"][x] for x in sides)
-    for market, sel_moves in moves.items():
-        if market != "1X2" and selection in sel_moves:
-            return sel_moves[selection]
-    return None
+            parts.append(sum(moves["1X2"][x] for x in sides))
+            break
+    over_move = next((sels[k] for mk, sels in moves.items() if mk.startswith("OU")
+                      for k in sels if k.startswith("Over")), None)
+    direction = _goal_direction(selection)
+    if over_move is not None and direction:
+        parts.append(direction * over_move)
+    return min(parts) if parts else None
+
+
+def _goal_direction(selection: str) -> int:
+    """+1 if the selection needs more goals, -1 if fewer, 0 if neither."""
+    if "Under" in selection or "NG" in selection or "vince a zero" in selection:
+        return -1
+    if "Over" in selection or selection.endswith("GG") or " GG" in selection:
+        return 1
+    return 0
 
 
 def match_selections(match: dict, rho: float, model_weight: float = DEFAULT_MODEL_WEIGHT) -> dict[str, float]:
