@@ -1,133 +1,150 @@
-id,registrata,schedina,lega,data,partita,selezione,prob,quota,minuto,punteggio,esito,finale
-1,2026-11-22T00:00,SA12 Facile,ita.1,2026-11-22,Atalanta - Inter,Segno X2,0.8100,1.17,0,0-0,vinta,4-4
-2,2026-11-22T00:00,SA12 Facile,ita.1,2026-11-22,Bologna - Udinese,Casa Over 0.5,0.8300,1.15,0,0-0,vinta,1-1
-3,2026-11-21T00:00,SA12 Facile,ita.1,2026-11-21,Parma - Roma,Over 1.5,0.8300,1.15,0,0-0,vinta,1-5
-4,2026-11-22T00:00,SA12 Facile,ita.1,2026-11-22,Juventus - Venezia,Ospite Under 1.5,0.8200,1.15,0,0-0,vinta,4-0
-5,2026-11-21T00:00,SA12 Facile,ita.1,2026-11-21,Napoli - Torino,Under 4.5,0.8200,1.16,0,0-0,vinta,1-0
-6,2026-11-21T00:00,SA12 Media,ita.1,2026-11-21,Como - Cagliari,Segno 1,0.7500,1.29,0,0-0,vinta,2-0
-7,2026-11-22T00:00,SA12 Media,ita.1,2026-11-22,Sassuolo - Genoa,Ospite Over 0.5,0.7400,1.29,0,0-0,vinta,0-2
-8,2026-11-22T00:00,SA12 Media,ita.1,2026-11-22,Atalanta - Inter,Under 4.5,0.7300,1.30,0,0-0,persa,4-4
-9,2026-11-21T00:00,SA12 Media,ita.1,2026-11-21,Parma - Roma,Segno 2,0.7400,1.29,0,0-0,vinta,1-5
-10,2026-11-22T00:00,SA12 Media,ita.1,2026-11-22,Bologna - Udinese,Under 3.5,0.7200,1.33,0,0-0,vinta,1-1
-11,2026-11-21T00:00,SA12 Difficile,ita.1,2026-11-21,Como - Cagliari,1X + Over 2.5,0.5700,1.61,0,0-0,persa,2-0
-12,2026-11-22T00:00,SA12 Difficile,ita.1,2026-11-22,Juventus - Venezia,Over 2.5,0.5900,1.62,0,0-0,vinta,4-0
-13,2026-11-22T00:00,SA12 Difficile,ita.1,2026-11-22,Atalanta - Inter,2 + Over 1.5,0.5500,1.68,0,0-0,persa,4-4
-14,2026-11-22T00:00,SA12 Difficile,ita.1,2026-11-22,Bologna - Udinese,1X + Under 3.5,0.5600,1.63,0,0-0,vinta,1-1
-15,2026-11-21T00:00,SA12 Difficile,ita.1,2026-11-21,Napoli - Torino,Ospite Over 0.5,0.5900,1.62,0,0-0,persa,1-0
-16,2026-11-22T00:00,SA12 Difficile,ita.1,2026-11-22,Sassuolo - Genoa,12 + Over 1.5,0.5400,1.68,0,0-0,vinta,0-2
-17,2026-11-21T00:00,SA12 Quota 30 tre partite,ita.1,2026-11-21,Parma - Roma,Under 2.5,0.3900,2.47,0,0-0,persa,1-5
-18,2026-11-21T00:00,SA12 Quota 30 tre partite,ita.1,2026-11-21,Napoli - Torino,Ospite Under 0.5,0.4100,2.31,0,0-0,vinta,1-0
-19,2026-11-22T00:00,SA12 Quota 30 tre partite,ita.1,2026-11-22,Juventus - Venezia,Over 4.5,0.1900,4.91,0,0-0,persa,4-0
-20,2026-11-21T00:00,SA12 Sicura,ita.1,2026-11-21,Como - Cagliari,Segno 1X,0.9100,1.05,0,0-0,vinta,2-0
-21,2026-11-21T00:00,SA12 Sicura,ita.1,2026-11-21,Parma - Roma,Ospite Over 0.5,0.9100,1.05,0,0-0,vinta,1-5
-22,2026-11-22T00:00,SA12 Sicura,ita.1,2026-11-22,Atalanta - Inter,Ospite Over 0.5,0.9000,1.06,0,0-0,vinta,4-4
-23,2026-11-22T00:00,SA12 Quota 10,ita.1,2026-11-22,Juventus - Venezia,1 + Under 3.5,0.4200,2.18,0,0-0,persa,4-0
-24,2026-11-23T00:00,SA12 Quota 10,ita.1,2026-11-23,Monza - Fiorentina,Over 2.5,0.6100,1.56,0,0-0,vinta,3-0
-25,2026-11-22T00:00,SA12 Quota 10,ita.1,2026-11-22,Sassuolo - Genoa,GG,0.5400,1.75,0,0-0,persa,0-2
-26,2026-11-22T00:00,SA12 Quota 10,ita.1,2026-11-22,Atalanta - Inter,GG,0.6300,1.52,0,0-0,vinta,4-4
-27,2026-11-21T00:00,SA12 Quota 30,ita.1,2026-11-21,Como - Cagliari,1 + NG,0.4300,2.12,0,0-0,vinta,2-0
-28,2026-11-21T00:00,SA12 Quota 30,ita.1,2026-11-21,Parma - Roma,2 + NG,0.4300,2.12,0,0-0,persa,1-5
-29,2026-11-21T00:00,SA12 Quota 30,ita.1,2026-11-21,Napoli - Torino,GG,0.5100,1.86,0,0-0,persa,1-0
-30,2026-11-22T00:00,SA12 Quota 30,ita.1,2026-11-22,Bologna - Udinese,GG,0.5000,1.90,0,0-0,vinta,1-1
-31,2026-11-22T00:00,SA12 Quota 30,ita.1,2026-11-22,Sassuolo - Genoa,GG,0.5400,1.75,0,0-0,persa,0-2
-32,2026-11-22T00:00,SA12 Speciale sicura,ita.1,2026-11-22,Juventus - Venezia,Corner 1X2: 1,0.8700,1.07,0,0-0,vinta,
-33,2026-11-22T00:00,SA12 Speciale sicura,ita.1,2026-11-22,Bologna - Udinese,1T Under 2.5,0.8900,1.05,0,0-0,vinta,
-34,2026-11-21T00:00,SA12 Speciale sicura,ita.1,2026-11-21,Parma - Roma,Ospite Over 0.5,0.9100,1.05,0,0-0,vinta,1-5
-35,2026-11-21T00:00,SA12 Speciale primi tempi,ita.1,2026-11-21,Parma - Roma,1T Segno 2,0.5400,1.72,0,0-0,vinta,
-36,2026-11-21T00:00,SA12 Speciale primi tempi,ita.1,2026-11-21,Napoli - Torino,1T Under 1.5,0.6300,1.49,0,0-0,vinta,
-37,2026-11-22T00:00,SA12 Speciale primi tempi,ita.1,2026-11-22,Juventus - Venezia,1T Segno X,0.3500,2.63,0,0-0,vinta,
-38,2026-11-22T00:00,SA12 Speciale primi tempi,ita.1,2026-11-22,Bologna - Udinese,1T Under 1.5,0.6800,1.38,0,0-0,vinta,
-39,2026-11-21T00:00,SA12 Speciale quota 28,ita.1,2026-11-21,Como - Cagliari,Handicap 1 (-1),0.5300,1.79,0,0-0,vinta,2-0
-40,2026-11-21T00:00,SA12 Speciale quota 28,ita.1,2026-11-21,Parma - Roma,Handicap 2 (-1),0.5200,1.81,0,0-0,vinta,1-5
-41,2026-11-21T00:00,SA12 Speciale quota 28,ita.1,2026-11-21,Napoli - Torino,1T Under 1.5,0.6300,1.49,0,0-0,vinta,
-42,2026-11-22T00:00,SA12 Speciale quota 28,ita.1,2026-11-22,Juventus - Venezia,Parziale/Finale X/1,0.2100,4.20,0,0-0,vinta,
-43,2026-11-22T00:00,SA12 Speciale quota 28,ita.1,2026-11-22,Sassuolo - Genoa,Cartellini Over 3.5,0.6600,1.39,0,0-0,persa,
-44,2026-11-24T00:00,CL5 Sicura,uefa.champions,2026-11-24,Real Madrid - PSV Eindhoven,Segno 1,0.8600,1.13,0,0-0,vinta,5-1
-45,2026-11-24T00:00,CL5 Sicura,uefa.champions,2026-11-24,Como - AEK,Segno 1X,0.9100,1.05,0,0-0,vinta,1-0
-46,2026-11-24T00:00,CL5 Sicura,uefa.champions,2026-11-24,Slovan Bratislava - Betis,Segno X2,0.9100,1.05,0,0-0,vinta,0-2
-47,2026-11-24T00:00,CL5 Quota 10,uefa.champions,2026-11-24,Feyenoord - Porto,Segno 2,0.4600,2.15,0,0-0,vinta,0-1
-48,2026-11-25T00:00,CL5 Quota 10,uefa.champions,2026-11-25,Lille - Bayern Munich,Segno 2,0.6000,1.65,0,0-0,persa,2-1
-49,2026-11-25T00:00,CL5 Quota 10,uefa.champions,2026-11-25,Sabah FK - Barcelona,2 + NG,0.3600,2.65,0,0-0,persa,1-4
-50,2026-11-25T00:00,CL5 Quota 30,uefa.champions,2026-11-25,Inter - Stuttgart,Handicap 1 (-1),0.5000,1.90,0,0-0,vinta,2-0
-51,2026-11-25T00:00,CL5 Quota 30,uefa.champions,2026-11-25,Paris SG - Roma,Segno 1,0.6900,1.43,0,0-0,persa,2-2
-52,2026-11-24T00:00,CL5 Quota 30,uefa.champions,2026-11-24,Como - AEK,1 + NG,0.3900,2.42,0,0-0,vinta,1-0
-53,2026-11-24T00:00,CL5 Quota 30,uefa.champions,2026-11-24,RB Leipzig - Lens,Handicap 1 (-1),0.5300,1.78,0,0-0,vinta,3-1
-54,2026-11-24T00:00,CL5 Quota 30,uefa.champions,2026-11-24,Slovan Bratislava - Betis,2 + NG,0.4000,2.40,0,0-0,vinta,0-2
-55,2026-11-24T00:00,CL5 Bassa,uefa.champions,2026-11-24,Real Madrid - PSV Eindhoven,Segno 1,0.8600,1.13,0,0-0,vinta,5-1
-56,2026-11-24T00:00,CL5 Bassa,uefa.champions,2026-11-24,Como - AEK,Segno 1,0.7700,1.27,0,0-0,vinta,1-0
-57,2026-11-24T00:00,CL5 Media,uefa.champions,2026-11-24,RB Leipzig - Lens,Segno 1,0.7300,1.34,0,0-0,vinta,3-1
-58,2026-11-24T00:00,CL5 Media,uefa.champions,2026-11-24,Feyenoord - Porto,Segno 2,0.4600,2.15,0,0-0,vinta,0-1
-59,2026-11-25T00:00,CL5 Media,uefa.champions,2026-11-25,Inter - Stuttgart,Segno 1,0.6900,1.42,0,0-0,vinta,2-0
-60,2026-11-24T00:00,CL5 Alta,uefa.champions,2026-11-24,RB Leipzig - Lens,Over 3.5,0.5500,1.73,0,0-0,vinta,3-1
-61,2026-11-24T00:00,CL5 Alta,uefa.champions,2026-11-24,Feyenoord - Porto,Segno 2,0.4600,2.15,0,0-0,vinta,0-1
-62,2026-11-25T00:00,CL5 Alta,uefa.champions,2026-11-25,Inter - Stuttgart,Segno 1,0.6900,1.42,0,0-0,vinta,2-0
-63,2026-11-24T00:00,CL5 Alta,uefa.champions,2026-11-24,Arsenal - Dortmund,Casa Under 1.5,0.3800,2.50,0,0-0,vinta,1-1
-64,2026-11-24T00:00,CL5 Quota 100,uefa.champions,2026-11-24,RB Leipzig - Lens,Over 4.5,0.3600,2.67,0,0-0,persa,3-1
-65,2026-11-24T00:00,CL5 Quota 100,uefa.champions,2026-11-24,Feyenoord - Porto,Segno 2,0.4600,2.15,0,0-0,vinta,0-1
-66,2026-11-24T00:00,CL5 Quota 100,uefa.champions,2026-11-24,Slovan Bratislava - Betis,Over 3.5,0.4800,1.91,0,0-0,persa,0-2
-67,2026-11-24T00:00,CL5 Quota 100,uefa.champions,2026-11-24,Arsenal - Dortmund,Segno X2,0.3200,2.81,0,0-0,vinta,1-1
-68,2026-11-24T00:00,CL5 Quota 100,uefa.champions,2026-11-24,Man City - Napoli,Over 4.5,0.3600,2.68,0,0-0,persa,2-2
-69,2026-11-26T00:00,EL live 2 quota 9,uefa.europa.conf,2026-11-26,Borac Banja Luka - Atalanta,Segno 2,0.6600,1.40,2,0-0,vinta,2-3
-70,2026-11-26T00:00,EL live 2 quota 9,uefa.europa,2026-11-26,OFI Crete - Anderlecht,Segno 2,0.5700,1.62,2,0-0,vinta,1-3
-71,2026-11-26T00:00,EL live 2 quota 9,uefa.europa.conf,2026-11-26,CSKA Sofia - Trabzonspor,2 + Over 1.5,0.4800,1.93,2,0-0,vinta,1-2
-72,2026-11-26T00:00,EL live 2 quota 9,uefa.europa.conf,2026-11-26,SC Freiburg - FC Twente,Segno 1,0.4700,1.96,2,0-0,vinta,2-1
-73,2026-11-26T00:00,EL live 2 quota 20,uefa.europa.conf,2026-11-26,Borac Banja Luka - Atalanta,2 + Over 1.5,0.5700,1.62,2,0-0,vinta,2-3
-74,2026-11-26T00:00,EL live 2 quota 20,uefa.europa,2026-11-26,OFI Crete - Anderlecht,Segno 2,0.5700,1.62,2,0-0,vinta,1-3
-75,2026-11-26T00:00,EL live 2 quota 20,uefa.europa.conf,2026-11-26,CSKA Sofia - Trabzonspor,2 + Over 1.5,0.4800,1.93,2,0-0,vinta,1-2
-76,2026-11-26T00:00,EL live 2 quota 20,uefa.europa.conf,2026-11-26,SC Freiburg - FC Twente,Segno 1,0.4700,1.96,2,0-0,vinta,2-1
-77,2026-11-26T00:00,EL live 2 quota 20,uefa.europa,2026-11-26,Sunderland - Jagiellonia Bialystok,1 + Over 1.5,0.6600,1.41,2,0-0,persa,1-1
-78,2026-11-26T00:00,EL live 2 quota 20,uefa.europa,2026-11-26,Juventus - Omonia Nicosia,1 + Over 1.5,0.7200,1.28,2,0-0,vinta,4-1
-79,2026-11-26T00:00,EL live 2 quota 30,uefa.europa.conf,2026-11-26,Borac Banja Luka - Atalanta,2 + Over 1.5,0.5700,1.62,2,0-0,vinta,2-3
-80,2026-11-26T00:00,EL live 2 quota 30,uefa.europa,2026-11-26,OFI Crete - Anderlecht,Segno 2,0.5700,1.62,2,0-0,vinta,1-3
-81,2026-11-26T00:00,EL live 2 quota 30,uefa.europa.conf,2026-11-26,CSKA Sofia - Trabzonspor,2 + Over 1.5,0.4800,1.93,2,0-0,vinta,1-2
-82,2026-11-26T00:00,EL live 2 quota 30,uefa.europa.conf,2026-11-26,SC Freiburg - FC Twente,Segno 1,0.4700,1.96,2,0-0,vinta,2-1
-83,2026-11-26T00:00,EL live 2 quota 30,uefa.europa,2026-11-26,Sunderland - Jagiellonia Bialystok,1 + Over 1.5,0.6600,1.41,2,0-0,persa,1-1
-84,2026-11-26T00:00,EL live 2 quota 30,uefa.europa,2026-11-26,Juventus - Omonia Nicosia,1 + Over 1.5,0.7200,1.28,2,0-0,vinta,4-1
-85,2026-11-26T00:00,EL live 2 quota 30,uefa.europa.conf,2026-11-26,Inter D'Escaldes - F.C. København,2 + Over 1.5,0.6000,1.55,2,0-0,persa,2-0
-86,2026-11-26T00:00,EL live 11 quota 9,uefa.europa,2026-11-26,Crystal Palace - Real Sociedad,GG,0.5800,1.59,11,0-0,vinta,2-1
-87,2026-11-26T00:00,EL live 11 quota 9,uefa.europa,2026-11-26,NEC Nijmegen - Stade Rennais,GG,0.6200,1.49,11,0-0,vinta,3-1
-88,2026-11-26T00:00,EL live 11 quota 9,uefa.europa,2026-11-26,OFI Crete - Anderlecht,2 + Over 1.5,0.4300,2.15,11,0-0,vinta,1-3
-89,2026-11-26T00:00,EL live 11 quota 9,uefa.europa.conf,2026-11-26,KAA Gent - Red Star Belgrade,GG,0.5200,1.77,11,0-0,vinta,1-1
-90,2026-11-26T00:00,EL live 11 quota 18,uefa.europa,2026-11-26,NEC Nijmegen - Stade Rennais,GG,0.6200,1.49,11,0-0,vinta,3-1
-91,2026-11-26T00:00,EL live 11 quota 18,uefa.europa,2026-11-26,OFI Crete - Anderlecht,2 + Over 1.5,0.4300,2.15,11,0-0,vinta,1-3
-92,2026-11-26T00:00,EL live 11 quota 18,uefa.europa,2026-11-26,Torreense - Celtic,2 + Over 1.5,0.4600,2.00,11,0-0,vinta,1-2
-93,2026-11-26T00:00,EL live 11 quota 18,uefa.europa.conf,2026-11-26,Borac Banja Luka - Atalanta,2 + Over 1.5,0.5300,1.73,11,0-0,vinta,2-3
-94,2026-11-26T00:00,EL live 11 quota 18,uefa.europa.conf,2026-11-26,CSKA Sofia - Trabzonspor,GG,0.5700,1.63,11,0-0,vinta,1-2
-95,2026-11-26T00:00,EL live 11 quota 27,uefa.europa,2026-11-26,NEC Nijmegen - Stade Rennais,GG,0.6200,1.49,11,0-0,vinta,3-1
-96,2026-11-26T00:00,EL live 11 quota 27,uefa.europa,2026-11-26,OFI Crete - Anderlecht,2 + Over 1.5,0.4300,2.15,11,0-0,vinta,1-3
-97,2026-11-26T00:00,EL live 11 quota 27,uefa.europa,2026-11-26,Torreense - Celtic,Segno 2,0.5500,1.67,11,0-0,vinta,1-2
-98,2026-11-26T00:00,EL live 11 quota 27,uefa.europa.conf,2026-11-26,Inter D'Escaldes - F.C. København,2 + Over 1.5,0.5600,1.67,11,0-0,persa,2-0
-99,2026-11-26T00:00,EL live 11 quota 27,uefa.europa.conf,2026-11-26,KAA Gent - Red Star Belgrade,GG,0.5200,1.77,11,0-0,vinta,1-1
-100,2026-11-26T00:00,EL live 11 quota 27,uefa.europa.conf,2026-11-26,SC Freiburg - FC Twente,GG,0.5400,1.71,11,0-0,vinta,2-1
-101,2026-11-26T00:00,EL primo tempo,uefa.europa,2026-11-26,NEC Nijmegen - Stade Rennais,1T Segno 1,0.8300,1.12,34,1-0,persa,
-102,2026-11-26T00:00,EL primo tempo,uefa.europa.conf,2026-11-26,CSKA Sofia - Trabzonspor,1T Segno 1,0.8100,1.15,34,1-0,vinta,
-103,2026-11-26T00:00,EL primo tempo,uefa.europa.conf,2026-11-26,Inter D'Escaldes - F.C. København,1T Segno 1,0.7700,1.20,34,1-0,vinta,
-104,2026-11-26T00:00,EL primo tempo,uefa.europa,2026-11-26,Juventus - Omonia Nicosia,1T Segno 2,0.7300,1.27,34,0-1,persa,
-105,2026-11-26T00:00,EL primo tempo,uefa.europa,2026-11-26,Lyon - Lillestrom,1T Segno X,0.6800,1.37,34,0-0,vinta,
-106,2026-11-26T00:00,EL intervallo solida,uefa.europa.conf,2026-11-26,FC Nordsjælland - Panathinaikos,Segno 2,0.8300,1.13,45,0-1,persa,3-2
-107,2026-11-26T00:00,EL intervallo solida,uefa.europa,2026-11-26,Crystal Palace - Real Sociedad,Segno X2,0.7700,1.22,45,0-0,persa,2-1
-108,2026-11-26T00:00,EL intervallo solida,uefa.europa,2026-11-26,Lyon - Lillestrom,Casa segna nel 2T,0.7400,1.27,45,0-0,persa,0-0
-109,2026-11-26T00:00,EL intervallo solida,uefa.europa,2026-11-26,Juventus - Omonia Nicosia,Casa segna nel 2T,0.8300,1.12,45,2-1,vinta,4-1
-110,2026-11-26T00:00,EL intervallo alta,uefa.europa.conf,2026-11-26,FC Nordsjælland - Panathinaikos,Segno 2,0.8300,1.13,45,0-1,persa,3-2
-111,2026-11-26T00:00,EL intervallo alta,uefa.europa,2026-11-26,Crystal Palace - Real Sociedad,Segno X2,0.7700,1.22,45,0-0,persa,2-1
-112,2026-11-26T00:00,EL intervallo alta,uefa.europa,2026-11-26,Lyon - Lillestrom,Casa segna nel 2T,0.7400,1.27,45,0-0,persa,0-0
-113,2026-11-26T00:00,EL intervallo alta,uefa.europa,2026-11-26,Juventus - Omonia Nicosia,Casa segna nel 2T,0.8300,1.12,45,2-1,vinta,4-1
-114,2026-11-26T00:00,EL intervallo alta,uefa.europa,2026-11-26,NEC Nijmegen - Stade Rennais,Segno X2,0.7500,1.24,45,1-1,persa,3-1
-115,2026-11-26T00:00,EL intervallo alta,uefa.europa,2026-11-26,OFI Crete - Anderlecht,Ospite segna nel 2T,0.7300,1.28,45,0-2,vinta,1-3
-116,2026-11-26T00:00,EL intervallo quota 9,uefa.europa,2026-11-26,Crystal Palace - Real Sociedad,Segno 2,0.4100,2.26,45,0-0,persa,2-1
-117,2026-11-26T00:00,EL intervallo quota 9,uefa.europa,2026-11-26,Sunderland - Jagiellonia Bialystok,Segno 1,0.6000,1.55,45,0-0,persa,1-1
-118,2026-11-26T00:00,EL intervallo quota 9,uefa.europa.conf,2026-11-26,CSKA Sofia - Trabzonspor,Segno X2,0.5000,1.88,45,1-0,vinta,1-2
-119,2026-11-26T00:00,EL intervallo quota 9,uefa.europa.conf,2026-11-26,SC Freiburg - FC Twente,Ospite segna nel 2T,0.6600,1.42,45,1-0,vinta,2-1
-120,2026-11-26T00:00,EL intervallo quota 18,uefa.europa,2026-11-26,Crystal Palace - Real Sociedad,Segno 2,0.4100,2.26,45,0-0,persa,2-1
-121,2026-11-26T00:00,EL intervallo quota 18,uefa.europa,2026-11-26,NEC Nijmegen - Stade Rennais,Segno 2,0.4700,1.98,45,1-1,persa,3-1
-122,2026-11-26T00:00,EL intervallo quota 18,uefa.europa,2026-11-26,TSG Hoffenheim - SK Sturm Graz,Ospite segna nel 2T,0.5900,1.59,45,0-1,persa,3-1
-123,2026-11-26T00:00,EL intervallo quota 18,uefa.europa.conf,2026-11-26,CSKA Sofia - Trabzonspor,Segno X2,0.5000,1.88,45,1-0,vinta,1-2
-124,2026-11-26T00:00,EL intervallo quota 18,uefa.europa.conf,2026-11-26,FC Nordsjælland - Panathinaikos,Ospite segna nel 2T,0.6700,1.38,45,0-1,vinta,3-2
-125,2026-11-27T08:42,SA13 Quota 8.5,ita.1,2026-11-29,Udinese - Fiorentina,Over 2.5,0.5510,1.73,0,0-0,,
-126,2026-11-27T08:42,SA13 Quota 8.5,ita.1,2026-11-29,Sassuolo - Napoli,Over 3.5,0.3870,2.46,0,0-0,,
-127,2026-11-27T08:42,SA13 Quota 8.5,ita.1,2026-11-29,Como - Juventus,Under 2.5,0.4790,1.99,0,0-0,,
-128,2026-11-27T08:42,SA13 Quota 23,ita.1,2026-11-29,Udinese - Fiorentina,GG,0.5800,1.64,0,0-0,,
-129,2026-11-27T08:42,SA13 Quota 23,ita.1,2026-11-29,Sassuolo - Napoli,Over 3.5,0.3870,2.46,0,0-0,,
-130,2026-11-27T08:42,SA13 Quota 23,ita.1,2026-11-29,Como - Juventus,Under 2.5,0.4790,1.99,0,0-0,,
-131,2026-11-27T08:42,SA13 Quota 23,ita.1,2026-11-30,Lecce - Atalanta,GG,0.5860,1.63,0,0-0,,
-132,2026-11-27T08:42,SA13 Quota 23,ita.1,2026-11-30,Cagliari - Milan,Ospite Over 1.5,0.5300,1.81,0,0-0,,
+id,registrata,schedina,lega,data,partita,selezione,prob,quota,minuto,punteggio,esito,finale,puntata
+1,2026-11-22T00:00,SA12 Facile,ita.1,2026-11-22,Atalanta - Inter,Segno X2,0.8100,1.17,0,0-0,vinta,4-4,
+2,2026-11-22T00:00,SA12 Facile,ita.1,2026-11-22,Bologna - Udinese,Casa Over 0.5,0.8300,1.15,0,0-0,vinta,1-1,
+3,2026-11-21T00:00,SA12 Facile,ita.1,2026-11-21,Parma - Roma,Over 1.5,0.8300,1.15,0,0-0,vinta,1-5,
+4,2026-11-22T00:00,SA12 Facile,ita.1,2026-11-22,Juventus - Venezia,Ospite Under 1.5,0.8200,1.15,0,0-0,vinta,4-0,
+5,2026-11-21T00:00,SA12 Facile,ita.1,2026-11-21,Napoli - Torino,Under 4.5,0.8200,1.16,0,0-0,vinta,1-0,
+6,2026-11-21T00:00,SA12 Media,ita.1,2026-11-21,Como - Cagliari,Segno 1,0.7500,1.29,0,0-0,vinta,2-0,
+7,2026-11-22T00:00,SA12 Media,ita.1,2026-11-22,Sassuolo - Genoa,Ospite Over 0.5,0.7400,1.29,0,0-0,vinta,0-2,
+8,2026-11-22T00:00,SA12 Media,ita.1,2026-11-22,Atalanta - Inter,Under 4.5,0.7300,1.30,0,0-0,persa,4-4,
+9,2026-11-21T00:00,SA12 Media,ita.1,2026-11-21,Parma - Roma,Segno 2,0.7400,1.29,0,0-0,vinta,1-5,
+10,2026-11-22T00:00,SA12 Media,ita.1,2026-11-22,Bologna - Udinese,Under 3.5,0.7200,1.33,0,0-0,vinta,1-1,
+11,2026-11-21T00:00,SA12 Difficile,ita.1,2026-11-21,Como - Cagliari,1X + Over 2.5,0.5700,1.61,0,0-0,persa,2-0,
+12,2026-11-22T00:00,SA12 Difficile,ita.1,2026-11-22,Juventus - Venezia,Over 2.5,0.5900,1.62,0,0-0,vinta,4-0,
+13,2026-11-22T00:00,SA12 Difficile,ita.1,2026-11-22,Atalanta - Inter,2 + Over 1.5,0.5500,1.68,0,0-0,persa,4-4,
+14,2026-11-22T00:00,SA12 Difficile,ita.1,2026-11-22,Bologna - Udinese,1X + Under 3.5,0.5600,1.63,0,0-0,vinta,1-1,
+15,2026-11-21T00:00,SA12 Difficile,ita.1,2026-11-21,Napoli - Torino,Ospite Over 0.5,0.5900,1.62,0,0-0,persa,1-0,
+16,2026-11-22T00:00,SA12 Difficile,ita.1,2026-11-22,Sassuolo - Genoa,12 + Over 1.5,0.5400,1.68,0,0-0,vinta,0-2,
+17,2026-11-21T00:00,SA12 Quota 30 tre partite,ita.1,2026-11-21,Parma - Roma,Under 2.5,0.3900,2.47,0,0-0,persa,1-5,
+18,2026-11-21T00:00,SA12 Quota 30 tre partite,ita.1,2026-11-21,Napoli - Torino,Ospite Under 0.5,0.4100,2.31,0,0-0,vinta,1-0,
+19,2026-11-22T00:00,SA12 Quota 30 tre partite,ita.1,2026-11-22,Juventus - Venezia,Over 4.5,0.1900,4.91,0,0-0,persa,4-0,
+20,2026-11-21T00:00,SA12 Sicura,ita.1,2026-11-21,Como - Cagliari,Segno 1X,0.9100,1.05,0,0-0,vinta,2-0,
+21,2026-11-21T00:00,SA12 Sicura,ita.1,2026-11-21,Parma - Roma,Ospite Over 0.5,0.9100,1.05,0,0-0,vinta,1-5,
+22,2026-11-22T00:00,SA12 Sicura,ita.1,2026-11-22,Atalanta - Inter,Ospite Over 0.5,0.9000,1.06,0,0-0,vinta,4-4,
+23,2026-11-22T00:00,SA12 Quota 10,ita.1,2026-11-22,Juventus - Venezia,1 + Under 3.5,0.4200,2.18,0,0-0,persa,4-0,
+24,2026-11-23T00:00,SA12 Quota 10,ita.1,2026-11-23,Monza - Fiorentina,Over 2.5,0.6100,1.56,0,0-0,vinta,3-0,
+25,2026-11-22T00:00,SA12 Quota 10,ita.1,2026-11-22,Sassuolo - Genoa,GG,0.5400,1.75,0,0-0,persa,0-2,
+26,2026-11-22T00:00,SA12 Quota 10,ita.1,2026-11-22,Atalanta - Inter,GG,0.6300,1.52,0,0-0,vinta,4-4,
+27,2026-11-21T00:00,SA12 Quota 30,ita.1,2026-11-21,Como - Cagliari,1 + NG,0.4300,2.12,0,0-0,vinta,2-0,
+28,2026-11-21T00:00,SA12 Quota 30,ita.1,2026-11-21,Parma - Roma,2 + NG,0.4300,2.12,0,0-0,persa,1-5,
+29,2026-11-21T00:00,SA12 Quota 30,ita.1,2026-11-21,Napoli - Torino,GG,0.5100,1.86,0,0-0,persa,1-0,
+30,2026-11-22T00:00,SA12 Quota 30,ita.1,2026-11-22,Bologna - Udinese,GG,0.5000,1.90,0,0-0,vinta,1-1,
+31,2026-11-22T00:00,SA12 Quota 30,ita.1,2026-11-22,Sassuolo - Genoa,GG,0.5400,1.75,0,0-0,persa,0-2,
+32,2026-11-22T00:00,SA12 Speciale sicura,ita.1,2026-11-22,Juventus - Venezia,Corner 1X2: 1,0.8700,1.07,0,0-0,vinta,,
+33,2026-11-22T00:00,SA12 Speciale sicura,ita.1,2026-11-22,Bologna - Udinese,1T Under 2.5,0.8900,1.05,0,0-0,vinta,,
+34,2026-11-21T00:00,SA12 Speciale sicura,ita.1,2026-11-21,Parma - Roma,Ospite Over 0.5,0.9100,1.05,0,0-0,vinta,1-5,
+35,2026-11-21T00:00,SA12 Speciale primi tempi,ita.1,2026-11-21,Parma - Roma,1T Segno 2,0.5400,1.72,0,0-0,vinta,,
+36,2026-11-21T00:00,SA12 Speciale primi tempi,ita.1,2026-11-21,Napoli - Torino,1T Under 1.5,0.6300,1.49,0,0-0,vinta,,
+37,2026-11-22T00:00,SA12 Speciale primi tempi,ita.1,2026-11-22,Juventus - Venezia,1T Segno X,0.3500,2.63,0,0-0,vinta,,
+38,2026-11-22T00:00,SA12 Speciale primi tempi,ita.1,2026-11-22,Bologna - Udinese,1T Under 1.5,0.6800,1.38,0,0-0,vinta,,
+39,2026-11-21T00:00,SA12 Speciale quota 28,ita.1,2026-11-21,Como - Cagliari,Handicap 1 (-1),0.5300,1.79,0,0-0,vinta,2-0,
+40,2026-11-21T00:00,SA12 Speciale quota 28,ita.1,2026-11-21,Parma - Roma,Handicap 2 (-1),0.5200,1.81,0,0-0,vinta,1-5,
+41,2026-11-21T00:00,SA12 Speciale quota 28,ita.1,2026-11-21,Napoli - Torino,1T Under 1.5,0.6300,1.49,0,0-0,vinta,,
+42,2026-11-22T00:00,SA12 Speciale quota 28,ita.1,2026-11-22,Juventus - Venezia,Parziale/Finale X/1,0.2100,4.20,0,0-0,vinta,,
+43,2026-11-22T00:00,SA12 Speciale quota 28,ita.1,2026-11-22,Sassuolo - Genoa,Cartellini Over 3.5,0.6600,1.39,0,0-0,persa,,
+44,2026-11-24T00:00,CL5 Sicura,uefa.champions,2026-11-24,Real Madrid - PSV Eindhoven,Segno 1,0.8600,1.13,0,0-0,vinta,5-1,
+45,2026-11-24T00:00,CL5 Sicura,uefa.champions,2026-11-24,Como - AEK,Segno 1X,0.9100,1.05,0,0-0,vinta,1-0,
+46,2026-11-24T00:00,CL5 Sicura,uefa.champions,2026-11-24,Slovan Bratislava - Betis,Segno X2,0.9100,1.05,0,0-0,vinta,0-2,
+47,2026-11-24T00:00,CL5 Quota 10,uefa.champions,2026-11-24,Feyenoord - Porto,Segno 2,0.4600,2.15,0,0-0,vinta,0-1,
+48,2026-11-25T00:00,CL5 Quota 10,uefa.champions,2026-11-25,Lille - Bayern Munich,Segno 2,0.6000,1.65,0,0-0,persa,2-1,
+49,2026-11-25T00:00,CL5 Quota 10,uefa.champions,2026-11-25,Sabah FK - Barcelona,2 + NG,0.3600,2.65,0,0-0,persa,1-4,
+50,2026-11-25T00:00,CL5 Quota 30,uefa.champions,2026-11-25,Inter - Stuttgart,Handicap 1 (-1),0.5000,1.90,0,0-0,vinta,2-0,
+51,2026-11-25T00:00,CL5 Quota 30,uefa.champions,2026-11-25,Paris SG - Roma,Segno 1,0.6900,1.43,0,0-0,persa,2-2,
+52,2026-11-24T00:00,CL5 Quota 30,uefa.champions,2026-11-24,Como - AEK,1 + NG,0.3900,2.42,0,0-0,vinta,1-0,
+53,2026-11-24T00:00,CL5 Quota 30,uefa.champions,2026-11-24,RB Leipzig - Lens,Handicap 1 (-1),0.5300,1.78,0,0-0,vinta,3-1,
+54,2026-11-24T00:00,CL5 Quota 30,uefa.champions,2026-11-24,Slovan Bratislava - Betis,2 + NG,0.4000,2.40,0,0-0,vinta,0-2,
+55,2026-11-24T00:00,CL5 Bassa,uefa.champions,2026-11-24,Real Madrid - PSV Eindhoven,Segno 1,0.8600,1.13,0,0-0,vinta,5-1,
+56,2026-11-24T00:00,CL5 Bassa,uefa.champions,2026-11-24,Como - AEK,Segno 1,0.7700,1.27,0,0-0,vinta,1-0,
+57,2026-11-24T00:00,CL5 Media,uefa.champions,2026-11-24,RB Leipzig - Lens,Segno 1,0.7300,1.34,0,0-0,vinta,3-1,
+58,2026-11-24T00:00,CL5 Media,uefa.champions,2026-11-24,Feyenoord - Porto,Segno 2,0.4600,2.15,0,0-0,vinta,0-1,
+59,2026-11-25T00:00,CL5 Media,uefa.champions,2026-11-25,Inter - Stuttgart,Segno 1,0.6900,1.42,0,0-0,vinta,2-0,
+60,2026-11-24T00:00,CL5 Alta,uefa.champions,2026-11-24,RB Leipzig - Lens,Over 3.5,0.5500,1.73,0,0-0,vinta,3-1,
+61,2026-11-24T00:00,CL5 Alta,uefa.champions,2026-11-24,Feyenoord - Porto,Segno 2,0.4600,2.15,0,0-0,vinta,0-1,
+62,2026-11-25T00:00,CL5 Alta,uefa.champions,2026-11-25,Inter - Stuttgart,Segno 1,0.6900,1.42,0,0-0,vinta,2-0,
+63,2026-11-24T00:00,CL5 Alta,uefa.champions,2026-11-24,Arsenal - Dortmund,Casa Under 1.5,0.3800,2.50,0,0-0,vinta,1-1,
+64,2026-11-24T00:00,CL5 Quota 100,uefa.champions,2026-11-24,RB Leipzig - Lens,Over 4.5,0.3600,2.67,0,0-0,persa,3-1,
+65,2026-11-24T00:00,CL5 Quota 100,uefa.champions,2026-11-24,Feyenoord - Porto,Segno 2,0.4600,2.15,0,0-0,vinta,0-1,
+66,2026-11-24T00:00,CL5 Quota 100,uefa.champions,2026-11-24,Slovan Bratislava - Betis,Over 3.5,0.4800,1.91,0,0-0,persa,0-2,
+67,2026-11-24T00:00,CL5 Quota 100,uefa.champions,2026-11-24,Arsenal - Dortmund,Segno X2,0.3200,2.81,0,0-0,vinta,1-1,
+68,2026-11-24T00:00,CL5 Quota 100,uefa.champions,2026-11-24,Man City - Napoli,Over 4.5,0.3600,2.68,0,0-0,persa,2-2,
+69,2026-11-26T00:00,EL live 2 quota 9,uefa.europa.conf,2026-11-26,Borac Banja Luka - Atalanta,Segno 2,0.6600,1.40,2,0-0,vinta,2-3,
+70,2026-11-26T00:00,EL live 2 quota 9,uefa.europa,2026-11-26,OFI Crete - Anderlecht,Segno 2,0.5700,1.62,2,0-0,vinta,1-3,
+71,2026-11-26T00:00,EL live 2 quota 9,uefa.europa.conf,2026-11-26,CSKA Sofia - Trabzonspor,2 + Over 1.5,0.4800,1.93,2,0-0,vinta,1-2,
+72,2026-11-26T00:00,EL live 2 quota 9,uefa.europa.conf,2026-11-26,SC Freiburg - FC Twente,Segno 1,0.4700,1.96,2,0-0,vinta,2-1,
+73,2026-11-26T00:00,EL live 2 quota 20,uefa.europa.conf,2026-11-26,Borac Banja Luka - Atalanta,2 + Over 1.5,0.5700,1.62,2,0-0,vinta,2-3,
+74,2026-11-26T00:00,EL live 2 quota 20,uefa.europa,2026-11-26,OFI Crete - Anderlecht,Segno 2,0.5700,1.62,2,0-0,vinta,1-3,
+75,2026-11-26T00:00,EL live 2 quota 20,uefa.europa.conf,2026-11-26,CSKA Sofia - Trabzonspor,2 + Over 1.5,0.4800,1.93,2,0-0,vinta,1-2,
+76,2026-11-26T00:00,EL live 2 quota 20,uefa.europa.conf,2026-11-26,SC Freiburg - FC Twente,Segno 1,0.4700,1.96,2,0-0,vinta,2-1,
+77,2026-11-26T00:00,EL live 2 quota 20,uefa.europa,2026-11-26,Sunderland - Jagiellonia Bialystok,1 + Over 1.5,0.6600,1.41,2,0-0,persa,1-1,
+78,2026-11-26T00:00,EL live 2 quota 20,uefa.europa,2026-11-26,Juventus - Omonia Nicosia,1 + Over 1.5,0.7200,1.28,2,0-0,vinta,4-1,
+79,2026-11-26T00:00,EL live 2 quota 30,uefa.europa.conf,2026-11-26,Borac Banja Luka - Atalanta,2 + Over 1.5,0.5700,1.62,2,0-0,vinta,2-3,
+80,2026-11-26T00:00,EL live 2 quota 30,uefa.europa,2026-11-26,OFI Crete - Anderlecht,Segno 2,0.5700,1.62,2,0-0,vinta,1-3,
+81,2026-11-26T00:00,EL live 2 quota 30,uefa.europa.conf,2026-11-26,CSKA Sofia - Trabzonspor,2 + Over 1.5,0.4800,1.93,2,0-0,vinta,1-2,
+82,2026-11-26T00:00,EL live 2 quota 30,uefa.europa.conf,2026-11-26,SC Freiburg - FC Twente,Segno 1,0.4700,1.96,2,0-0,vinta,2-1,
+83,2026-11-26T00:00,EL live 2 quota 30,uefa.europa,2026-11-26,Sunderland - Jagiellonia Bialystok,1 + Over 1.5,0.6600,1.41,2,0-0,persa,1-1,
+84,2026-11-26T00:00,EL live 2 quota 30,uefa.europa,2026-11-26,Juventus - Omonia Nicosia,1 + Over 1.5,0.7200,1.28,2,0-0,vinta,4-1,
+85,2026-11-26T00:00,EL live 2 quota 30,uefa.europa.conf,2026-11-26,Inter D'Escaldes - F.C. København,2 + Over 1.5,0.6000,1.55,2,0-0,persa,2-0,
+86,2026-11-26T00:00,EL live 11 quota 9,uefa.europa,2026-11-26,Crystal Palace - Real Sociedad,GG,0.5800,1.59,11,0-0,vinta,2-1,
+87,2026-11-26T00:00,EL live 11 quota 9,uefa.europa,2026-11-26,NEC Nijmegen - Stade Rennais,GG,0.6200,1.49,11,0-0,vinta,3-1,
+88,2026-11-26T00:00,EL live 11 quota 9,uefa.europa,2026-11-26,OFI Crete - Anderlecht,2 + Over 1.5,0.4300,2.15,11,0-0,vinta,1-3,
+89,2026-11-26T00:00,EL live 11 quota 9,uefa.europa.conf,2026-11-26,KAA Gent - Red Star Belgrade,GG,0.5200,1.77,11,0-0,vinta,1-1,
+90,2026-11-26T00:00,EL live 11 quota 18,uefa.europa,2026-11-26,NEC Nijmegen - Stade Rennais,GG,0.6200,1.49,11,0-0,vinta,3-1,
+91,2026-11-26T00:00,EL live 11 quota 18,uefa.europa,2026-11-26,OFI Crete - Anderlecht,2 + Over 1.5,0.4300,2.15,11,0-0,vinta,1-3,
+92,2026-11-26T00:00,EL live 11 quota 18,uefa.europa,2026-11-26,Torreense - Celtic,2 + Over 1.5,0.4600,2.00,11,0-0,vinta,1-2,
+93,2026-11-26T00:00,EL live 11 quota 18,uefa.europa.conf,2026-11-26,Borac Banja Luka - Atalanta,2 + Over 1.5,0.5300,1.73,11,0-0,vinta,2-3,
+94,2026-11-26T00:00,EL live 11 quota 18,uefa.europa.conf,2026-11-26,CSKA Sofia - Trabzonspor,GG,0.5700,1.63,11,0-0,vinta,1-2,
+95,2026-11-26T00:00,EL live 11 quota 27,uefa.europa,2026-11-26,NEC Nijmegen - Stade Rennais,GG,0.6200,1.49,11,0-0,vinta,3-1,
+96,2026-11-26T00:00,EL live 11 quota 27,uefa.europa,2026-11-26,OFI Crete - Anderlecht,2 + Over 1.5,0.4300,2.15,11,0-0,vinta,1-3,
+97,2026-11-26T00:00,EL live 11 quota 27,uefa.europa,2026-11-26,Torreense - Celtic,Segno 2,0.5500,1.67,11,0-0,vinta,1-2,
+98,2026-11-26T00:00,EL live 11 quota 27,uefa.europa.conf,2026-11-26,Inter D'Escaldes - F.C. København,2 + Over 1.5,0.5600,1.67,11,0-0,persa,2-0,
+99,2026-11-26T00:00,EL live 11 quota 27,uefa.europa.conf,2026-11-26,KAA Gent - Red Star Belgrade,GG,0.5200,1.77,11,0-0,vinta,1-1,
+100,2026-11-26T00:00,EL live 11 quota 27,uefa.europa.conf,2026-11-26,SC Freiburg - FC Twente,GG,0.5400,1.71,11,0-0,vinta,2-1,
+101,2026-11-26T00:00,EL primo tempo,uefa.europa,2026-11-26,NEC Nijmegen - Stade Rennais,1T Segno 1,0.8300,1.12,34,1-0,persa,,
+102,2026-11-26T00:00,EL primo tempo,uefa.europa.conf,2026-11-26,CSKA Sofia - Trabzonspor,1T Segno 1,0.8100,1.15,34,1-0,vinta,,
+103,2026-11-26T00:00,EL primo tempo,uefa.europa.conf,2026-11-26,Inter D'Escaldes - F.C. København,1T Segno 1,0.7700,1.20,34,1-0,vinta,,
+104,2026-11-26T00:00,EL primo tempo,uefa.europa,2026-11-26,Juventus - Omonia Nicosia,1T Segno 2,0.7300,1.27,34,0-1,persa,,
+105,2026-11-26T00:00,EL primo tempo,uefa.europa,2026-11-26,Lyon - Lillestrom,1T Segno X,0.6800,1.37,34,0-0,vinta,,
+106,2026-11-26T00:00,EL intervallo solida,uefa.europa.conf,2026-11-26,FC Nordsjælland - Panathinaikos,Segno 2,0.8300,1.13,45,0-1,persa,3-2,
+107,2026-11-26T00:00,EL intervallo solida,uefa.europa,2026-11-26,Crystal Palace - Real Sociedad,Segno X2,0.7700,1.22,45,0-0,persa,2-1,
+108,2026-11-26T00:00,EL intervallo solida,uefa.europa,2026-11-26,Lyon - Lillestrom,Casa segna nel 2T,0.7400,1.27,45,0-0,persa,0-0,
+109,2026-11-26T00:00,EL intervallo solida,uefa.europa,2026-11-26,Juventus - Omonia Nicosia,Casa segna nel 2T,0.8300,1.12,45,2-1,vinta,4-1,
+110,2026-11-26T00:00,EL intervallo alta,uefa.europa.conf,2026-11-26,FC Nordsjælland - Panathinaikos,Segno 2,0.8300,1.13,45,0-1,persa,3-2,
+111,2026-11-26T00:00,EL intervallo alta,uefa.europa,2026-11-26,Crystal Palace - Real Sociedad,Segno X2,0.7700,1.22,45,0-0,persa,2-1,
+112,2026-11-26T00:00,EL intervallo alta,uefa.europa,2026-11-26,Lyon - Lillestrom,Casa segna nel 2T,0.7400,1.27,45,0-0,persa,0-0,
+113,2026-11-26T00:00,EL intervallo alta,uefa.europa,2026-11-26,Juventus - Omonia Nicosia,Casa segna nel 2T,0.8300,1.12,45,2-1,vinta,4-1,
+114,2026-11-26T00:00,EL intervallo alta,uefa.europa,2026-11-26,NEC Nijmegen - Stade Rennais,Segno X2,0.7500,1.24,45,1-1,persa,3-1,
+115,2026-11-26T00:00,EL intervallo alta,uefa.europa,2026-11-26,OFI Crete - Anderlecht,Ospite segna nel 2T,0.7300,1.28,45,0-2,vinta,1-3,
+116,2026-11-26T00:00,EL intervallo quota 9,uefa.europa,2026-11-26,Crystal Palace - Real Sociedad,Segno 2,0.4100,2.26,45,0-0,persa,2-1,
+117,2026-11-26T00:00,EL intervallo quota 9,uefa.europa,2026-11-26,Sunderland - Jagiellonia Bialystok,Segno 1,0.6000,1.55,45,0-0,persa,1-1,
+118,2026-11-26T00:00,EL intervallo quota 9,uefa.europa.conf,2026-11-26,CSKA Sofia - Trabzonspor,Segno X2,0.5000,1.88,45,1-0,vinta,1-2,
+119,2026-11-26T00:00,EL intervallo quota 9,uefa.europa.conf,2026-11-26,SC Freiburg - FC Twente,Ospite segna nel 2T,0.6600,1.42,45,1-0,vinta,2-1,
+120,2026-11-26T00:00,EL intervallo quota 18,uefa.europa,2026-11-26,Crystal Palace - Real Sociedad,Segno 2,0.4100,2.26,45,0-0,persa,2-1,
+121,2026-11-26T00:00,EL intervallo quota 18,uefa.europa,2026-11-26,NEC Nijmegen - Stade Rennais,Segno 2,0.4700,1.98,45,1-1,persa,3-1,
+122,2026-11-26T00:00,EL intervallo quota 18,uefa.europa,2026-11-26,TSG Hoffenheim - SK Sturm Graz,Ospite segna nel 2T,0.5900,1.59,45,0-1,persa,3-1,
+123,2026-11-26T00:00,EL intervallo quota 18,uefa.europa.conf,2026-11-26,CSKA Sofia - Trabzonspor,Segno X2,0.5000,1.88,45,1-0,vinta,1-2,
+124,2026-11-26T00:00,EL intervallo quota 18,uefa.europa.conf,2026-11-26,FC Nordsjælland - Panathinaikos,Ospite segna nel 2T,0.6700,1.38,45,0-1,vinta,3-2,
+125,2026-11-27T08:42,SA13 Quota 8.5,ita.1,2026-11-29,Udinese - Fiorentina,Over 2.5,0.5510,1.73,0,0-0,,,0
+126,2026-11-27T08:42,SA13 Quota 8.5,ita.1,2026-11-29,Sassuolo - Napoli,Over 3.5,0.3870,2.46,0,0-0,,,0
+127,2026-11-27T08:42,SA13 Quota 8.5,ita.1,2026-11-29,Como - Juventus,Under 2.5,0.4790,1.99,0,0-0,,,0
+128,2026-11-27T08:42,SA13 Quota 23,ita.1,2026-11-29,Udinese - Fiorentina,GG,0.5800,1.64,0,0-0,,,0
+129,2026-11-27T08:42,SA13 Quota 23,ita.1,2026-11-29,Sassuolo - Napoli,Over 3.5,0.3870,2.46,0,0-0,,,0
+130,2026-11-27T08:42,SA13 Quota 23,ita.1,2026-11-29,Como - Juventus,Under 2.5,0.4790,1.99,0,0-0,,,0
+131,2026-11-27T08:42,SA13 Quota 23,ita.1,2026-11-30,Lecce - Atalanta,GG,0.5860,1.63,0,0-0,,,0
+132,2026-11-27T08:42,SA13 Quota 23,ita.1,2026-11-30,Cagliari - Milan,Ospite Over 1.5,0.5300,1.81,0,0-0,,,0
+133,2026-11-27T09:38,SA13 Sistema 2/4: Sassuolo+Udinese,ita.1,2026-11-29,Sassuolo - Napoli,Segno 2,0.5900,1.62,0,0-0,,,2
+134,2026-11-27T09:38,SA13 Sistema 2/4: Sassuolo+Udinese,ita.1,2026-11-29,Udinese - Fiorentina,Over 2.5,0.5600,1.69,0,0-0,,,2
+135,2026-11-27T09:38,SA13 Sistema 2/4: Sassuolo+Como,ita.1,2026-11-29,Sassuolo - Napoli,Segno 2,0.5900,1.62,0,0-0,,,2
+136,2026-11-27T09:38,SA13 Sistema 2/4: Sassuolo+Como,ita.1,2026-11-29,Como - Juventus,Under 2.5,0.4800,2.00,0,0-0,,,2
+137,2026-11-27T09:38,SA13 Sistema 2/4: Sassuolo+Lecce,ita.1,2026-11-29,Sassuolo - Napoli,Segno 2,0.5900,1.62,0,0-0,,,2
+138,2026-11-27T09:38,SA13 Sistema 2/4: Sassuolo+Lecce,ita.1,2026-11-30,Lecce - Atalanta,GG,0.5800,1.63,0,0-0,,,2
+139,2026-11-27T09:38,SA13 Sistema 2/4: Udinese+Como,ita.1,2026-11-29,Udinese - Fiorentina,Over 2.5,0.5600,1.69,0,0-0,,,2
+140,2026-11-27T09:38,SA13 Sistema 2/4: Udinese+Como,ita.1,2026-11-29,Como - Juventus,Under 2.5,0.4800,2.00,0,0-0,,,2
+141,2026-11-27T09:38,SA13 Sistema 2/4: Udinese+Lecce,ita.1,2026-11-29,Udinese - Fiorentina,Over 2.5,0.5600,1.69,0,0-0,,,2
+142,2026-11-27T09:38,SA13 Sistema 2/4: Udinese+Lecce,ita.1,2026-11-30,Lecce - Atalanta,GG,0.5800,1.63,0,0-0,,,2
+143,2026-11-27T09:38,SA13 Sistema 2/4: Como+Lecce,ita.1,2026-11-29,Como - Juventus,Under 2.5,0.4800,2.00,0,0-0,,,2
+144,2026-11-27T09:38,SA13 Sistema 2/4: Como+Lecce,ita.1,2026-11-30,Lecce - Atalanta,GG,0.5800,1.63,0,0-0,,,2
+145,2026-11-27T09:38,SA13 Multipla alta,ita.1,2026-11-29,Sassuolo - Napoli,Segno 2,0.5900,1.62,0,0-0,,,3
+146,2026-11-27T09:38,SA13 Multipla alta,ita.1,2026-11-29,Udinese - Fiorentina,Over 2.5,0.5600,1.69,0,0-0,,,3
+147,2026-11-27T09:38,SA13 Multipla alta,ita.1,2026-11-29,Como - Juventus,Under 2.5,0.4800,2.00,0,0-0,,,3
+148,2026-11-27T09:38,SA13 Multipla alta,ita.1,2026-11-30,Lecce - Atalanta,GG,0.5800,1.63,0,0-0,,,3
+149,2026-11-27T09:38,SA13 Multipla alta,ita.1,2026-11-30,Cagliari - Milan,Ospite Over 1.5,0.5300,1.81,0,0-0,,,3
