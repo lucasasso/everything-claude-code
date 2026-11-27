@@ -131,14 +131,13 @@ id,registrata,schedina,lega,data,partita,selezione,prob,quota,minuto,punteggio,e
 130,2026-11-27T08:42,SA13 Quota 23,ita.1,2026-11-29,Como - Juventus,Under 2.5,0.4790,1.99,0,0-0,,,0
 131,2026-11-27T08:42,SA13 Quota 23,ita.1,2026-11-30,Lecce - Atalanta,GG,0.5860,1.63,0,0-0,,,0
 132,2026-11-27T08:42,SA13 Quota 23,ita.1,2026-11-30,Cagliari - Milan,Ospite Over 1.5,0.5300,1.81,0,0-0,,,0
-145,2026-11-27T09:38,SA13 Multipla alta,ita.1,2026-11-29,Sassuolo - Napoli,Segno 2,0.5900,1.62,0,0-0,,,3
-146,2026-11-27T09:38,SA13 Multipla alta,ita.1,2026-11-29,Udinese - Fiorentina,Over 2.5,0.5600,1.69,0,0-0,,,3
-147,2026-11-27T09:38,SA13 Multipla alta,ita.1,2026-11-29,Como - Juventus,Under 2.5,0.4800,2.00,0,0-0,,,3
-148,2026-11-27T09:38,SA13 Multipla alta,ita.1,2026-11-30,Lecce - Atalanta,GG,0.5800,1.63,0,0-0,,,3
-149,2026-11-27T09:38,SA13 Multipla alta,ita.1,2026-11-30,Cagliari - Milan,Ospite Over 1.5,0.5300,1.81,0,0-0,,,3
 150,2026-11-27T09:51,SA13 Sistema 2/3: Napoli+Udinese,ita.1,2026-11-29,Sassuolo - Napoli,Segno 2,0.5900,1.62,0,0-0,,,4
 151,2026-11-27T09:51,SA13 Sistema 2/3: Napoli+Udinese,ita.1,2026-11-29,Udinese - Fiorentina,Over 2.5,0.5600,1.69,0,0-0,,,4
 152,2026-11-27T09:51,SA13 Sistema 2/3: Napoli+Como,ita.1,2026-11-29,Sassuolo - Napoli,Segno 2,0.5900,1.62,0,0-0,,,4
 153,2026-11-27T09:51,SA13 Sistema 2/3: Napoli+Como,ita.1,2026-11-29,Como - Juventus,Under 2.5,0.4800,2.00,0,0-0,,,4
 154,2026-11-27T09:51,SA13 Sistema 2/3: Udinese+Como,ita.1,2026-11-29,Udinese - Fiorentina,Over 2.5,0.5600,1.69,0,0-0,,,4
 155,2026-11-27T09:51,SA13 Sistema 2/3: Udinese+Como,ita.1,2026-11-29,Como - Juventus,Under 2.5,0.4800,2.00,0,0-0,,,4
+156,2026-11-27T09:55,SA13 Multipla alta B,ita.1,2026-11-27,Venezia - Bologna,Under 2.5,0.5500,1.71,0,0-0,,,3
+157,2026-11-27T09:55,SA13 Multipla alta B,ita.1,2026-11-28,Frosinone - Parma,Over 3.5,0.4700,1.95,0,0-0,,,3
+158,2026-11-27T09:55,SA13 Multipla alta B,ita.1,2026-11-28,Torino - Lazio,Under 2.5,0.5000,1.91,0,0-0,,,3
+159,2026-11-27T09:55,SA13 Multipla alta B,ita.1,2026-11-29,Roma - Monza,Over 3.5,0.5100,1.87,0,0-0,,,3
