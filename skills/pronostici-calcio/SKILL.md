@@ -153,6 +153,8 @@ Ogni giocata delle schedine che proponi va nel registro, anche se l'utente non l
 
    - `aggiorna` chiude le giocate con i risultati finali ESPN.
    - `esito` serve per i mercati che il risultato finale non decide: primo tempo, corner, cartellini, marcatori.
+   - `azzera` fa ripartire da zero il saldo in euro quando l'utente lo chiede. Lo storico delle previsioni resta per le statistiche di precisione.
+   - Ogni schedina conta 1 € nel saldo, salvo che nel JSON tu indichi `"puntata"`.
 
 Il registro sta in `registro/registro.csv`; cambia il percorso con `PRONOSTICI_REGISTRO`. Quando l'utente chiede come stanno andando le previsioni, mostragli il riepilogo:
 

@@ -17,13 +17,31 @@ from common import ESPN_BASE, canonical_team, http_json
 
 SKILL_DIR = Path(__file__).resolve().parent.parent
 FIELDS = ["id", "registrata", "schedina", "lega", "data", "partita", "selezione", "prob", "quota",
-          "minuto", "punteggio", "esito", "finale"]
+          "minuto", "punteggio", "esito", "finale", "puntata"]
+DEFAULT_STAKE = 1.0
 SIGNS = {"1", "X", "2", "1X", "X2", "12"}
 CALIBRATION_BINS = ((0.0, 0.4), (0.4, 0.6), (0.6, 0.8), (0.8, 1.01))
 
 
 def ledger_path() -> Path:
     return Path(os.environ.get("PRONOSTICI_REGISTRO", SKILL_DIR / "registro" / "registro.csv"))
+
+
+def reset_path() -> Path:
+    return ledger_path().with_name("azzeramento.txt")
+
+
+def reset_balance(day: date | None = None) -> date:
+    """Start the euro balance from zero: only slips whose matches are on or after `day` count."""
+    day = day or date.today()
+    reset_path().parent.mkdir(parents=True, exist_ok=True)
+    reset_path().write_text(day.isoformat(), encoding="utf-8")
+    return day
+
+
+def balance_start() -> date | None:
+    path = reset_path()
+    return date.fromisoformat(path.read_text(encoding="utf-8").strip()) if path.exists() else None
 
 
 def load() -> list[dict]:
@@ -58,7 +76,7 @@ def add(entries: list[dict]) -> int:
         date.fromisoformat(e["data"])
         rows.append({**{k: e.get(k, "") for k in FIELDS}, "id": next_id, "registrata": e.get("registrata") or now,
                      "prob": f"{prob:.4f}", "quota": f"{quota:.2f}", "minuto": e.get("minuto", 0),
-                     "punteggio": e.get("punteggio", "0-0")})
+                     "punteggio": e.get("punteggio", "0-0"), "puntata": e.get("puntata", "")})
         next_id += 1
     save(rows)
     return len(entries)
@@ -168,11 +186,26 @@ def summary(rows: list[dict] | None = None) -> dict:
     closed = {name: ls for name, ls in slips.items() if all(r["esito"] in ("vinta", "persa") for r in ls)}
     won = [n for n, ls in closed.items() if all(r["esito"] == "vinta" for r in ls)]
     profit = sum(math.prod(float(r["quota"]) for r in closed[n]) for n in won) - len(closed)
+    out["saldo"] = _balance(closed, won)
     out["schedine"] = {"chiuse": len(closed), "vinte": len(won),
                        "attese": round(sum(math.prod(float(r["prob"]) for r in ls) for ls in closed.values()), 1),
                        "profitto_unita": round(profit, 2), "roi": round(profit / len(closed), 3) if closed else None,
                        "vinte_elenco": won}
     return out
+
+
+def _balance(closed: dict[str, list[dict]], won: list[str]) -> dict:
+    """Euro balance of closed slips since the last reset (slip stake = its `puntata`, default 1 EUR)."""
+    start = balance_start()
+    counted = {n: ls for n, ls in closed.items() if start is None or min(date.fromisoformat(r["data"]) for r in ls) >= start}
+    staked = returned = 0.0
+    for name, legs in counted.items():
+        stake = max((float(r["puntata"]) for r in legs if r.get("puntata")), default=DEFAULT_STAKE)
+        staked += stake
+        if name in won:
+            returned += stake * math.prod(float(r["quota"]) for r in legs)
+    return {"dal": start.isoformat() if start else "inizio", "schedine": len(counted), "puntati_eur": round(staked, 2),
+            "vinti_eur": round(returned, 2), "saldo_eur": round(returned - staked, 2)}
 
 
 def _espn_finals(league: str, day: str) -> list[tuple[str, str, int, int]]:

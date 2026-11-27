@@ -190,6 +190,9 @@ def cmd_registro(args: argparse.Namespace) -> None:
         print(f"Registrate {registro.add(entries)} giocate in {registro.ledger_path()}")
     elif args.azione == "aggiorna":
         print(f"Chiuse {registro.update()} giocate con i risultati finali")
+    elif args.azione == "azzera":
+        day = registro.reset_balance(date.fromisoformat(args.data) if args.data else None)
+        print(f"Saldo azzerato: contano le schedine dal {day}")
     elif args.azione == "esito":
         registro.set_outcome(args.id, args.esito)
         print(f"Giocata {args.id}: {args.esito}")
@@ -252,7 +255,8 @@ def main() -> None:
     sp.set_defaults(func=cmd_speciali)
 
     rg = sub.add_parser("registro", help="registro delle previsioni: importa, aggiorna, esito, riepilogo")
-    rg.add_argument("azione", choices=["importa", "aggiorna", "esito", "riepilogo"])
+    rg.add_argument("azione", choices=["importa", "aggiorna", "esito", "riepilogo", "azzera"])
+    rg.add_argument("--data", help="data di azzeramento del saldo YYYY-MM-DD (per azzera, default oggi)")
     rg.add_argument("--file", help="JSON con le giocate da importare (per importa)")
     rg.add_argument("--id", type=int, help="id della giocata (per esito)")
     rg.add_argument("--esito", choices=["vinta", "persa"], help="esito manuale (per esito)")

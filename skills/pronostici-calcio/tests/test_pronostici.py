@@ -281,3 +281,20 @@ def test_ledger_round_trip_and_summary(tmp_path, monkeypatch):
 
     with pytest.raises(ValueError):
         registro.add([{**base, "schedina": "C", "selezione": "Segno 1", "prob": 1.4, "quota": 1.2}])
+
+
+def test_balance_restarts_from_zero_after_reset(tmp_path, monkeypatch):
+    import registro
+
+    monkeypatch.setenv("PRONOSTICI_REGISTRO", str(tmp_path / "r.csv"))
+    old = {"lega": "ita.1", "data": "2026-11-21", "partita": "A - B", "selezione": "Segno 1", "prob": 0.5}
+    registro.add([{**old, "schedina": "vecchia", "quota": 3.0, "esito": "vinta"},
+                  {**old, "data": "2026-11-29", "schedina": "nuova", "quota": 2.0, "esito": "vinta", "puntata": 5},
+                  {**old, "data": "2026-11-29", "schedina": "persa", "quota": 2.0, "esito": "persa"}])
+    assert registro.summary()["saldo"]["saldo_eur"] == pytest.approx(2.0 + 5.0 - 1.0)
+
+    registro.reset_balance(date(2026, 11, 27))
+    saldo = registro.summary()["saldo"]
+    assert saldo["schedine"] == 2
+    assert saldo["puntati_eur"] == pytest.approx(6.0)
+    assert saldo["saldo_eur"] == pytest.approx(5.0 * 2.0 - 6.0)
