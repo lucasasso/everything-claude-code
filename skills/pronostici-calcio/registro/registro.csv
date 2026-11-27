@@ -123,3 +123,11 @@ id,registrata,schedina,lega,data,partita,selezione,prob,quota,minuto,punteggio,e
 122,2026-11-26T00:00,EL intervallo quota 18,uefa.europa,2026-11-26,TSG Hoffenheim - SK Sturm Graz,Ospite segna nel 2T,0.5900,1.59,45,0-1,persa,3-1
 123,2026-11-26T00:00,EL intervallo quota 18,uefa.europa.conf,2026-11-26,CSKA Sofia - Trabzonspor,Segno X2,0.5000,1.88,45,1-0,vinta,1-2
 124,2026-11-26T00:00,EL intervallo quota 18,uefa.europa.conf,2026-11-26,FC Nordsjælland - Panathinaikos,Ospite segna nel 2T,0.6700,1.38,45,0-1,vinta,3-2
+125,2026-11-27T08:42,SA13 Quota 8.5,ita.1,2026-11-29,Udinese - Fiorentina,Over 2.5,0.5510,1.73,0,0-0,,
+126,2026-11-27T08:42,SA13 Quota 8.5,ita.1,2026-11-29,Sassuolo - Napoli,Over 3.5,0.3870,2.46,0,0-0,,
+127,2026-11-27T08:42,SA13 Quota 8.5,ita.1,2026-11-29,Como - Juventus,Under 2.5,0.4790,1.99,0,0-0,,
+128,2026-11-27T08:42,SA13 Quota 23,ita.1,2026-11-29,Udinese - Fiorentina,GG,0.5800,1.64,0,0-0,,
+129,2026-11-27T08:42,SA13 Quota 23,ita.1,2026-11-29,Sassuolo - Napoli,Over 3.5,0.3870,2.46,0,0-0,,
+130,2026-11-27T08:42,SA13 Quota 23,ita.1,2026-11-29,Como - Juventus,Under 2.5,0.4790,1.99,0,0-0,,
+131,2026-11-27T08:42,SA13 Quota 23,ita.1,2026-11-30,Lecce - Atalanta,GG,0.5860,1.63,0,0-0,,
+132,2026-11-27T08:42,SA13 Quota 23,ita.1,2026-11-30,Cagliari - Milan,Ospite Over 1.5,0.5300,1.81,0,0-0,,
