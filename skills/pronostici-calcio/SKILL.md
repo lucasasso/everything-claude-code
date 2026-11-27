@@ -128,6 +128,40 @@ Rispondi in italiano con:
 4. **Motivazioni** in 1-2 righe per giocata: numeri del modello più notizie, con le fonti.
 5. **Avvertenza** breve: sono stime, niente è sicuro, gioca solo cifre che puoi perdere. In Italia c'è il Telefono Verde Nazionale per i problemi da gioco d'azzardo: 800 558822.
 
+### 7. Registra ogni giocata proposta
+
+Ogni giocata delle schedine che proponi va nel registro, anche se l'utente non la gioca. Solo così si misura se le previsioni funzionano.
+
+1. Prepara un JSON con una voce per giocata:
+
+   ```json
+   [{"schedina": "SA13 Quota 10", "lega": "ita.1", "data": "2026-11-29", "partita": "Como - Juventus",
+     "selezione": "Under 2.5", "prob": 0.48, "quota": 1.99}]
+   ```
+
+   - `lega` è lo slug ESPN: `ita.1`, `uefa.champions`, `uefa.europa` o `uefa.europa.conf`.
+   - Per il live aggiungi `"minuto"` e `"punteggio": "1-0"`.
+   - `selezione` usa le etichette della skill: `Segno 1X`, `2 + Over 1.5`, `GG`, `Casa segna nel 2T`, `Handicap 1 (-1)` e così via.
+2. Registra le giocate:
+
+   ```bash
+   python3 pronostici.py registro importa --file giocate.json
+   python3 pronostici.py registro aggiorna
+   python3 pronostici.py registro esito --id 42 --esito vinta
+   python3 pronostici.py registro riepilogo
+   ```
+
+   - `aggiorna` chiude le giocate con i risultati finali ESPN.
+   - `esito` serve per i mercati che il risultato finale non decide: primo tempo, corner, cartellini, marcatori.
+
+Il registro sta in `registro/registro.csv`; cambia il percorso con `PRONOSTICI_REGISTRO`. Quando l'utente chiede come stanno andando le previsioni, mostragli il riepilogo:
+
+- giocate vinte contro quelle attese (la somma delle probabilità);
+- Brier score e calibrazione;
+- risultati per pre-partita e live.
+
+Ricordagli che su poche decine di giocate il risultato è dominato dalla fortuna.
+
 ## Regole
 
 - Non inventare quote, formazioni o notizie. Se un dato manca, scrivi che manca.

@@ -239,3 +239,45 @@ def test_market_move_tracks_shortening_prices():
     assert move_for(goals_up, "NG") < 0
     assert move_for(goals_up, "Casa vince a zero") < 0
     assert move_for(goals_up, "Segno X") is None
+
+
+@pytest.mark.parametrize("selection,final,reg,expected", [
+    ("Segno 1X", (1, 1), (0, 0), True),
+    ("2 + Over 1.5", (1, 3), (0, 0), True),
+    ("2 + Over 1.5", (0, 1), (0, 0), False),
+    ("1 + NG", (2, 0), (0, 0), True),
+    ("GG", (1, 1), (0, 0), True),
+    ("Casa Under 1.5", (1, 1), (0, 0), True),
+    ("Ospite segna nel 2T", (1, 1), (1, 0), True),
+    ("Ospite segna nel 2T", (3, 0), (1, 0), False),
+    ("Handicap 1 (-1)", (2, 0), (0, 0), True),
+    ("Handicap 2 (-1)", (1, 2), (0, 0), False),
+    ("Casa vince a zero", (2, 0), (0, 0), True),
+    ("Multigol 2-4", (4, 1), (0, 0), False),
+    ("Corner 1X2: 1", (2, 0), (0, 0), None),
+    ("1T Segno X", (0, 0), (0, 0), None),
+])
+def test_settle_selection_from_final_score(selection, final, reg, expected):
+    from registro import settle
+
+    assert settle(selection, final, reg) is expected
+
+
+def test_ledger_round_trip_and_summary(tmp_path, monkeypatch):
+    import registro
+
+    monkeypatch.setenv("PRONOSTICI_REGISTRO", str(tmp_path / "r.csv"))
+    base = {"lega": "ita.1", "data": "2026-11-21", "partita": "Como - Cagliari"}
+    registro.add([{**base, "schedina": "A", "selezione": "Segno 1", "prob": 0.75, "quota": 1.29, "esito": "vinta"},
+                  {**base, "schedina": "A", "selezione": "Over 2.5", "prob": 0.6, "quota": 1.6, "esito": "persa"},
+                  {**base, "schedina": "B", "selezione": "Segno 1X", "prob": 0.9, "quota": 1.05, "esito": "vinta",
+                   "minuto": 34, "punteggio": "1-0"}])
+    out = registro.summary()
+    assert out["giocate_chiuse"] == 3
+    assert out["tutte"]["vinte"] == 2 and out["tutte"]["attese"] == pytest.approx(2.2, abs=0.05)
+    assert out["live"]["giocate"] == 1
+    assert out["schedine"] == {**out["schedine"], "chiuse": 2, "vinte": 1, "vinte_elenco": ["B"]}
+    assert out["schedine"]["profitto_unita"] == pytest.approx(1.05 - 2, abs=1e-6)
+
+    with pytest.raises(ValueError):
+        registro.add([{**base, "schedina": "C", "selezione": "Segno 1", "prob": 1.4, "quota": 1.2}])

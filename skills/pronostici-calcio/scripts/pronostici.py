@@ -7,6 +7,8 @@ Esempi:
   python3 pronostici.py schedina --analisi pronostici/serie-a-2026-11-21/analisi.json --bankroll 50
   python3 pronostici.py tre-schedine --analisi pronostici/serie-a-2026-11-21/analisi.json
   python3 pronostici.py speciali --analisi pronostici/serie-a-2026-11-21/analisi.json
+  python3 pronostici.py registro importa --file giocate.json
+  python3 pronostici.py registro aggiorna
   python3 pronostici.py statistiche --squadra Inter
   python3 pronostici.py classifica-forza --top 30
   python3 pronostici.py backtest --lega I1 --stagione 2526
@@ -180,6 +182,20 @@ def cmd_speciali(args: argparse.Namespace) -> None:
     print(text)
 
 
+def cmd_registro(args: argparse.Namespace) -> None:
+    import registro
+
+    if args.azione == "importa":
+        entries = json.loads(Path(args.file).read_text(encoding="utf-8"))
+        print(f"Registrate {registro.add(entries)} giocate in {registro.ledger_path()}")
+    elif args.azione == "aggiorna":
+        print(f"Chiuse {registro.update()} giocate con i risultati finali")
+    elif args.azione == "esito":
+        registro.set_outcome(args.id, args.esito)
+        print(f"Giocata {args.id}: {args.esito}")
+    print(json.dumps(registro.summary(), indent=2, ensure_ascii=False))
+
+
 def cmd_statistiche(args: argparse.Namespace) -> None:
     today = date.today()
     matches = load_fd_results(today, seasons_back=0)
@@ -234,6 +250,13 @@ def main() -> None:
     sp.add_argument("--analisi", required=True)
     sp.add_argument("--peso-modello", type=float, default=DEFAULT_MODEL_WEIGHT)
     sp.set_defaults(func=cmd_speciali)
+
+    rg = sub.add_parser("registro", help="registro delle previsioni: importa, aggiorna, esito, riepilogo")
+    rg.add_argument("azione", choices=["importa", "aggiorna", "esito", "riepilogo"])
+    rg.add_argument("--file", help="JSON con le giocate da importare (per importa)")
+    rg.add_argument("--id", type=int, help="id della giocata (per esito)")
+    rg.add_argument("--esito", choices=["vinta", "persa"], help="esito manuale (per esito)")
+    rg.set_defaults(func=cmd_registro)
 
     st = sub.add_parser("statistiche", help="statistiche stagionali di una squadra")
     st.add_argument("--squadra", required=True)
